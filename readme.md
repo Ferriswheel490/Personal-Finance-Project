@@ -35,9 +35,10 @@ Not used for this class
 
 ## Contributers
 ___
-+ Person who helped - what they did
-+ Person who helped - what they did
-+ Person who helped - what they did  
++ Fairus De La Cruz - what they did
++ Evan McCabe - what they did
++ Cecily Strong - what they did  
++ Jackson Hauley - what they did  
 
 ## Author's Information
 ____
