@@ -134,3 +134,55 @@ DEFINE account_system()
             Ask for username
             Ask for favorite food
             Show pie chart of all finances
+
+Cecily
+---
+DEFINE new_account(account name)
+    CREATE new csv titled the account name
+    WRITE header in csv: name,date,expense,source,amount,income,source,amount,saving goals, saving goal amount, budget limits, budget limit amount
+
+DEFINE load_account(csv name)
+    Declare list variable
+    OPEN csv (named for account)
+    For ROW in csv
+        Append to list a dictionary using the header names
+    RETURN list
+
+DEFINE save_account(list, csv name)
+    Open csv(named for account)
+    WRITE list to csv
+
+DEFINE currency_convert(currency1,currency2,amount)
+    Currencies dictionary (to usd)
+    USD - 1
+    EUR - 1.09
+    JPY - 0067
+    GBP - 1.30
+    CNH - 0.138218
+    AUD - 0.63
+    CAD - 0.70
+    CHF - 1.14
+    HKD - 0.13
+    NZD - 0.58
+    Return (currencies[currency1]*amount/currencies[currency2])
+
+DEFINE income_expense(list)
+    IMPORT datetime
+    inc_exp=[{date:}{expenses:[]}{income:[]}]
+    GET num from user (1. Track income, 2. Track expense, 3. Compare, 4. exit)
+    IF num is 1
+        ADD to inc_exp[income]: {amount: GET amount, source: GET source}
+    IF num is 2
+        ADD to inc_exp[expenses]: {amount: GET amount, source: GET source}
+    IF num is 3
+        GET year from user
+        temp=[]
+    For x in list
+        If list[x] is date:
+            ADD x to temp
+        DISPLAY temp
+    IF num is 4
+        RETURN inc_exp
+    ELSE
+        PRINT invalid option
+        income_expense(list)
