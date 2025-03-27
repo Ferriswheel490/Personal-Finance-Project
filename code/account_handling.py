@@ -27,7 +27,7 @@ def load(name):
             reader=csv.reader(file)
             for row in reader:
                 for x in li:
-                    print(x)
+                    print(acc[x])
                     acc[x]=acc[x].append(row[li.index(x)])
         return acc
     else: return False
@@ -37,6 +37,9 @@ def save(name,update):
     update['date']=formatted_date
     with open(f"{name}.csv","a",newline='') as file:
         writer=csv.DictWriter(file,fieldnames=['name','date','expense','source','amount','income','source','amount','saving goals', 'saving goal amount', 'budget_limits', 'budget_limit_amount'])
-        writer.writeheader()
-        writer.writerows(update)    
-print(load(export('test')))
+        writer.writerow(update)
+debug()
+dic={'name':'test','date':'','expense':'z','source':['f'],'amount':[1],'income':2,'source':'h','amount':1,'saving goals':'g', 'saving goal amount':1, 'budget_limits':1, 'budget_limit_amount':1}
+print(dic.keys())
+save('test',dic)
+load(export('test'))
