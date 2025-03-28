@@ -12,8 +12,8 @@ REMINDER: Show what the project looks like while running)
 
 ## Used technologies
 ___
-+ First Library
-`pip install code for library`
++ matplotlib
+`pip install matplotlib`
 + Second Library
 `pip install code for library`
 + Third Library
