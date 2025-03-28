@@ -2,7 +2,6 @@
 
 from essentials import * # Imports cs() (clear screen), int_input() (for integer inputs error handling), end(message) ends the program wiht a message
 import os
-#this may be temporary
 def sign_in(username, password, user_database, account, make_account):
     account =  input("do you have an account (y/n): ")
     if account == "yes":
