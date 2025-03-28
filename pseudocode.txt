@@ -1,61 +1,51 @@
-#Jacksons pseudocode
+# Jackson pseudocode
+def print_graph():
+    cs()
+    Print OPTIONS of BANKING INFORMATION (print UI)
+    Input from BANKING INFORMATION OPTIONS
+    “‘Banking plan (input goal), revenue calculator(input revenue,time), bar chart of sales (amount earned/month), Exponential growth(input %, starting, ending goal (optional))’”
+    Print OPTIONS (Chart, graph, bar chart, array/index)
+    Input from OPTIONS
+    If OPTIONS is CHART
+        Print MATPLOTLIB Chart (banking information)
+    ElseIf OPTIONS is GRAPH
+        Print MATPLOTLIB Graph (banking information)
+    ElseIf OPTIONS is BAR CHART
+        Print MATPLOTLIB Bar Chart (banking information)
+    ElseIf OPTIONS is ARRAY/INDEX
+        Print MATPLOTLIB Array (banking information)
 
-Main UI
+# Main UI:
 Print (TITLE)
 Print OPTIONS:
 Input from OPTIONS (exit, graph, login, log out, enter information)
-
 If CHOICE == graph:
-    RUN print_graph()
+    RUN print_graph
 Elif CHOICE == login:
     RUN load_account()
-Elif CHOICE == log out:
+Elif choice == log out:
     RUN load_account()
-Elif CHOICE == enter_information:
+Elif choice enter_information:
     RUN print_graph()
 
-# Jacksons psudocode
-DEFINE print_graph()
-    cs()
-    Print OPTIONS for BANKING INFORMATION (print UI)
-    Input from BANKING INFORMATION OPTIONS:
-    “Banking plan (input goal), revenue calculator (input revenue, time), 
-    bar chart of sales (amount earned/month), 
-    Exponential growth (input %, starting, ending goal (optional))”
+# cecily pseudocode
+DEFINE new_account(account_name):
+    CREATE new csv titled the account_name
+    WRITE header in csv: name, date, expense, source, amount, income, source, amount, saving goals, saving goal amount, budget limits, budget limit amount
 
-    Print OPTIONS (Chart, Graph, Bar Chart, Array/Index)
-    Input from OPTIONS
-
-    If OPTIONS == CHART:
-        Print MATPLOTLIB Chart (banking information)
-    ElseIf OPTIONS == GRAPH:
-        Print MATPLOTLIB Graph (banking information)
-    ElseIf OPTIONS == BAR CHART:
-        Print MATPLOTLIB Bar Chart (banking information)
-    ElseIf OPTIONS == ARRAY/INDEX:
-        Print MATPLOTLIB Array (banking information)
-
-# Cecily Psudocode
-DEFINE new_account(account_name)
-    CREATE new CSV titled account_name
-    WRITE header in CSV: 
-    [name, date, expense, source, amount, income, source, amount, 
-    saving goals, saving goal amount, budget limits, budget limit amount]
-
-DEFINE load_account(csv_name)
+DEFINE load_account(csv_name):
     Declare list variable
-    OPEN CSV (named for account)
-    For ROW in CSV:
+    OPEN csv (named for account)
+    For ROW in csv:
         Append to list a dictionary using the header names
     RETURN list
 
-DEFINE save_account(list, csv_name)
-    Open CSV (named for account)
-    WRITE list to CSV
+DEFINE save_account(list, csv_name):
+    Open csv (named for account)
+    WRITE list to csv
 
-Currency conversion function
-DEFINE currency_convert(currency1, currency2, amount)
-    Currencies dictionary (to USD)
+DEFINE currency_convert(currency1, currency2, amount):
+    Currencies dictionary (to usd)
     USD - 1
     EUR - 1.09
     JPY - 0.0067
@@ -66,59 +56,74 @@ DEFINE currency_convert(currency1, currency2, amount)
     CHF - 1.14
     HKD - 0.13
     NZD - 0.58
-
     Return (currencies[currency1] * amount / currencies[currency2])
 
-
-DEFINE income_expense(list)
+DEFINE income_expense(list):
     IMPORT datetime
-    inc_exp = [{date:}{expenses:[]}{income:[]}]
-
-    GET num from user (1. Track income, 2. Track expense, 3. Compare, 4. Exit)
-
-    IF num == 1:
+    inc_exp = [{date:}, {expenses: []}, {income: []}]
+    GET num from user (1. Track income, 2. Track expense, 3. Compare, 4. exit)
+    IF num is 1:
         ADD to inc_exp[income]: {amount: GET amount, source: GET source}
-    IF num == 2:
+    IF num is 2:
         ADD to inc_exp[expenses]: {amount: GET amount, source: GET source}
-    IF num == 3:
+    IF num is 3:
         GET year from user
         temp = []
         For x in list:
             If list[x] is date:
                 ADD x to temp
         DISPLAY temp
-    IF num == 4:
+    IF num is 4:
         RETURN inc_exp
     ELSE:
-        PRINT "Invalid option"
-        income_expense(list)
+        PRINT invalid option
+    income_expense(list)
 
-# Evan’s pseudocode
-DEFINE savings_goal_tracker()
-    Ask user if they want to set a savings goal or check progress
+# Evan pseudocode
+# Hehehe, c’est moi! Je m'appelle Evan McSlay. (:<
 
-    Ensure valid input
+# Savings Goal Tracker Function:
+Ask the user if they want to set a savings goal or check their progress towards the goal:
 
-    IF user wants to set a savings goal:
-        Inform user that new goal will override old ones
-        Ask user for item they want to save for
-        Ask user for cost of the item
-        Set new saving goal in saving goal dictionary
+Make sure that the user input a valid option:
 
-    IF user wants to check progress:
-        Show how much money is in savings vs goal amount
+If they want to set a savings goal:
+    Tell the user that their new savings goal will override any old ones:
+    Ask the user what item they want to save up for:
+    Ask the user how much the item they want to save up for costs:
+    Set the user’s new saving goal in the saving goal dictionary:
 
+If they want to check their progress towards their savings goal:
+    Show the user how much money is in their savings compared to how much their savings goal cost:
 
-DEFINE budgeting_function()
-    Ask user if they want to set budget limits or compare expenses to budget
-    Ensure valid input
+# Budgeting Function:
+Ask the user if they want to set budget limits or compare expenses to budget:
 
-    IF user chooses to set budget limits:
-        Show budgeting categories (Rent, Food, Gas, Spending, Saving)
-        Show total money available for allocation
+Make sure that the user input a valid option:
 
-    IF user chooses to compare expenses to budget:
-        Compare current expenses with set budget
+If the user chose to set budget limits:
+    Tell the user what the budgeting categories are (Rent, Food, Gas, Spending, Saving):
+    Tell the user how much total money they have to allocate:
+    Ask the user how much money they want to allocate to their rent budget (N/A, number amount, or percentage):
+    Ask the user how much money they want to allocate to their food budget (N/A, number amount, or percentage):
+    Ask the user how much money they want to allocate to their gas budget (N/A, number amount, or percentage):
+    Ask the user how much money they want to allocate to their spending budget (N/A, number amount, or percentage):
+    Ask the user how much money they want to allocate to their saving budget (N/A, number amount, or percentage):
+    If the user’s percentages/number amounts DO NOT add up to 100% of the user’s total money:
+        Tell the user that their numbers don’t add up and they need to try again:
+        Run the budgeting function to keep the program running:
+    If the user’s percentages/number amounts DO add up to 100% of the user’s total money:
+        Set the user’s new budget in a variable:
+        Tell the user that the process was successful:
+
+If the user chose to compare expenses to budget:
+    Ask the user what their expense is:
+    Ask the user how much their expense costs:
+    Ask the user what budget category it applies to:
+    If the user DOES NOT have enough money in their budget for the expense:
+        Tell the user that they do not have enough money, and show them how much more money they still need:
+    If the user DOES have enough money in their budget for the expense:
+        Tell the user that they have enough money, and show them how much they exceeded their expense by:
 
 # Fairus pseudocode
 DEFINE account_system()
@@ -134,55 +139,3 @@ DEFINE account_system()
             Ask for username
             Ask for favorite food
             Show pie chart of all finances
-
-Cecily
----
-DEFINE new_account(account name)
-    CREATE new csv titled the account name
-    WRITE header in csv: name,date,expense,source,amount,income,source,amount,saving goals, saving goal amount, budget limits, budget limit amount
-
-DEFINE load_account(csv name)
-    Declare list variable
-    OPEN csv (named for account)
-    For ROW in csv
-        Append to list a dictionary using the header names
-    RETURN list
-
-DEFINE save_account(list, csv name)
-    Open csv(named for account)
-    WRITE list to csv
-
-DEFINE currency_convert(currency1,currency2,amount)
-    Currencies dictionary (to usd)
-    USD - 1
-    EUR - 1.09
-    JPY - 0067
-    GBP - 1.30
-    CNH - 0.138218
-    AUD - 0.63
-    CAD - 0.70
-    CHF - 1.14
-    HKD - 0.13
-    NZD - 0.58
-    Return (currencies[currency1]*amount/currencies[currency2])
-
-DEFINE income_expense(list)
-    IMPORT datetime
-    inc_exp=[{date:}{expenses:[]}{income:[]}]
-    GET num from user (1. Track income, 2. Track expense, 3. Compare, 4. exit)
-    IF num is 1
-        ADD to inc_exp[income]: {amount: GET amount, source: GET source}
-    IF num is 2
-        ADD to inc_exp[expenses]: {amount: GET amount, source: GET source}
-    IF num is 3
-        GET year from user
-        temp=[]
-    For x in list
-        If list[x] is date:
-            ADD x to temp
-        DISPLAY temp
-    IF num is 4
-        RETURN inc_exp
-    ELSE
-        PRINT invalid option
-        income_expense(list)
