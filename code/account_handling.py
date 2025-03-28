@@ -3,7 +3,7 @@ import csv
 from cecilys_helpers import debug
 import datetime
 def new_acc(name): #note: dont have two accounts have the same name
-    header=['name','date','expense','source','amount','income','source','amount','saving goals', 'saving goal amount', 'budget_limits', 'budget_limit_amount']
+    header=['name','date','expense_source','expense_amount','income_source','income_amount','amount','saving goals', 'saving goal amount', 'budget_limits', 'budget_limit_amount']
     with open(f"{name}.csv","w",newline='') as file1:
         writer=csv.DictWriter(file1,fieldnames=header)
         writer.writeheader()
@@ -15,16 +15,18 @@ def new_acc(name): #note: dont have two accounts have the same name
 def export(acc):
     with open(f"code/acc_names.csv","r") as file:
         reader=csv.reader(file)
+        next(reader)
         for row in reader:
             if row[0] == acc:
                 return acc
         else: return False
 def load(name):
     if name != False:
-        acc={'name':[],'date':[],'expense':[],'source':[],'amount':[],'income':[],'source':[],'amount':[],'saving goals':[], 'saving goal amount':[], 'budget_limits':[], 'budget_limit_amount':[]}
+        acc={'name':[],'date':[],'expense_source':[],'expense_amount':[],'income_source':[],'income_amount':[],'saving goals':[], 'saving goal amount':[], 'budget_limits':[], 'budget_limit_amount':[]}
         li=list(acc.keys())
         with open(f"{name}.csv","r",newline='') as file:
             reader=csv.reader(file)
+            next(reader)
             for row in reader:
                 for x in li:
                     acc[x].append(row[li.index(x)])
@@ -35,12 +37,16 @@ def load(name):
 def save(name,update):
     today = datetime.date.today()
     formatted_date = today.strftime("%Y/%m/%d")
-    update['date']=formatted_date
+    update['date'] = formatted_date
     with open(f"{name}.csv","a",newline='') as file:
-        writer=csv.DictWriter(file,fieldnames=['name','date','expense','source','amount','income','source','amount','saving goals', 'saving goal amount', 'budget_limits', 'budget_limit_amount'])
+        writer=csv.DictWriter(file,fieldnames=['name','date','expense_source','expense_amount','income_source','income_amount','amount','saving goals', 'saving goal amount', 'budget_limits', 'budget_limit_amount'])
         writer.writerow(update)
 
-dic={'name':'test','date':'','expense':'z','source':'f','amount':1,'income':2,'source':'h','amount':1,'saving goals':'g', 'saving goal amount':1, 'budget_limits':1, 'budget_limit_amount':1}
 
-save('test',dic)
-load(export('test'))
+
+def display(dic):
+    for x in list(dic.keys()):
+        print(f"{x}:{dic[x]}")
+
+save(export('cecily'),{'name':'cecily','date':'','expense_source':'a','expense_amount':'2','income_source':'c','income_amount':'4','saving goals':'d', 'saving goal amount':'6', 'budget_limits':'f', 'budget_limit_amount':'8'})
+display(load(export('cecily')))
