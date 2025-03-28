@@ -1,5 +1,5 @@
 
-
+import os
 #this may be temporary
 def sign_in(username, password, user_database, account, make_account):
     account =  input("do you have an account (y/n): ")
@@ -14,4 +14,4 @@ def sign_in(username, password, user_database, account, make_account):
             return sign_in()
         if make_account == "yes":
             username_input = input("Username: ")
-            password_input = input("Password: ")
+            password_input = input("Password: ")    
