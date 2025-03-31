@@ -37,6 +37,7 @@ def load(name):
 def save(name,update):
     today = datetime.date.today()
     formatted_date = today.strftime("%Y/%m/%d")
+    update['name'] = name
     update['date'] = formatted_date
     with open(f"{name}.csv","a",newline='') as file:
         writer=csv.DictWriter(file,fieldnames=['name','date','expense_source','expense_amount','income_source','income_amount','amount','saving goals', 'saving goal amount', 'budget_limits', 'budget_limit_amount'])
@@ -47,6 +48,7 @@ def save(name,update):
 def display(dic):
     for x in list(dic.keys()):
         print(f"{x}:{dic[x]}")
-
+'''
 save(export('cecily'),{'name':'cecily','date':'','expense_source':'a','expense_amount':'2','income_source':'c','income_amount':'4','saving goals':'d', 'saving goal amount':'6', 'budget_limits':'f', 'budget_limit_amount':'8'})
-display(load(export('cecily')))
+'''
+#display(load(export('cecily')))
