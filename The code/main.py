@@ -1,21 +1,73 @@
 # Cecily/Evan/Hasan/Jackson - Main File
 
 from essentials import * # Imports cs() (clear screen), int_input() (for integer inputs error handling), end(message) ends the program wiht a message
+import csv
 import os
-def sign_in(username, password, user_database, account, make_account):
-    account =  input("do you have an account (y/n): ")
-    if account == "yes":
-        username_input = input("Username: ")
-        password_input = input("Password: ")
-        result = sign_in(username_input, password_input)
-        print(result)
-    elif account == "no":
-        make_account = input("do you wanna make an account (y/n): ")
-        if make_account == "no":
-            return sign_in()
-        elif make_account == "yes":
-            username_input = input("Username: ")
-            password_input = input("Password: ")    
+
+USER_FILE = "users.csv"
+
+# Check if CSV file exists, create it if not
+def initialize_file():
+    if not os.path.exists(USER_FILE):
+        with open(USER_FILE, "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(["username", "password"])  # Header row
+
+# Load users from CSV into a dictionary
+def load_users():
+    users = {}
+    with open(USER_FILE, "r") as file:
+        reader = csv.reader(file)
+        next(reader)  # Skip header
+        for row in reader:
+            if len(row) == 2:  # Ensure valid data
+                users[row[0]] = row[1]
+    return users
+
+# Save a new user to the CSV file
+def save_user(username, password):
+    with open(USER_FILE, "a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([username, password])
+
+# Sign-in function
+def sign_in():
+    initialize_file()
+    users = load_users()
+    
+    has_account = input("Do you have an account? (yes/no): ").strip().lower()
+    
+    if has_account == "no":
+        create = input("Do you want to create one? (yes/no): ").strip().lower()
+        if create == "yes":
+            return create_account(users)
+        else:
+            print("Okay, exiting...")
+            return
+
+    username = input("Enter your username: ")
+    password = input("Enter your password: ")
+
+    if username in users and users[username] == password:
+        print("Login successful! Welcome back,", username)
+    else:
+        print("Invalid username or password.")
+
+# Account creation function
+def create_account(users):
+    username = input("Choose a username: ")
+    
+    if username in users:
+        print("Username already taken. Try again.")
+        return create_account(users)
+    
+    password = input("Choose a password: ")
+    save_user(username, password)
+    print("Account created successfully!")
+
+# Run the sign-in function
+sign_in()
+ 
 
 # We need a function that takes username and password and either makes a new account with a setup process or loads the old account into a master list -Jackson
 
