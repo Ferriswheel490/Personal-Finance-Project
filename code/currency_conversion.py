@@ -1,6 +1,7 @@
 #Cecily Strong currency conversion
 import math  
 def currency_convert(currency1,currency2,amount):
+    
     currency1=currency1.upper()
     currency2=currency2.upper()
     currencies = {  
@@ -21,8 +22,7 @@ def currency_convert(currency1,currency2,amount):
                 amount=(currencies[currency1]*amount)/currencies[currency2] # conversion equation (converts to usd then the other currency)
                 amount=math.floor(amount*100)/100 # rounds down
                 return (f"{amount} {currency2}")
-            else: return 'invalid currency'
+            else: return 'invalid currency',False
         else:
-            return 'invalid amount'
-    except: return 'not a number'
-print(currency_convert('EUR','gbp','1'))
+            return 'invalid amount',False
+    except: return 'not a number',False

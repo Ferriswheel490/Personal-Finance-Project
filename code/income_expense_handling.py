@@ -55,9 +55,9 @@ dic=load(export('cecily'))
 year=2025
 year=str(year)
 temp=[]
-print(dic['date'])
+'''
 for x in dic['date']:
     if dic['date'][dic['date'].index(x)][0:4] == str(year):
         temp.append(x)
-print(temp) 
+print(temp) '''
 #income_expense(load(export('cecily')))
