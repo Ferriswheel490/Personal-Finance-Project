@@ -126,14 +126,16 @@ If the user chose to compare expenses to budget:
         Tell the user that they have enough money, and show them how much they exceeded their expense by:
 
 # Fairus pseudocode
-Come from the Main
-Input to ask if they have an account
-If they do:
-    They sign back in
-If they don't:
-    Ask if they wanna create an account
-    If they say yes:
-        They put in their username 
-        Ask for their favorite food
+DEFINE account_system()
+    Input to ask if they have an account
 
-Show pie chart of everything
+    IF they do:
+        Sign back in
+
+    IF they don't:
+        Ask if they want to create an account
+
+        IF they say yes:
+            Ask for username
+            Ask for favorite food
+            Show pie chart of all finances
