@@ -1,10 +1,14 @@
 # Cecily/Evan/Hasan/Jackson - Main File
+from budgeting import budgeting
+from currency_conversion import currency_convert
+from income_expense_handling import income_expense
+from savings_goal_tracker import goal_tracker
 
 from essentials import * # Imports cs() (clear screen), int_input() (for integer inputs error handling), end(message) ends the program wiht a message
 import csv
 import os
 
-USER_FILE = "users.csv"
+USER_FILE = "user.csv"
 
 # Check if CSV file exists, create it if not
 def initialize_file():
@@ -77,11 +81,12 @@ def main(): # Main function that runs the UI
         choice = int_input("""
 Financial Manager
 
-1. Option Here
-2. Option Here
-3. Option Here
-4. Option Here
-5. Exit
+1. currency cnversion
+2. budgeting
+3. income and expenses handling
+4. saving goal tracker
+5. show pie chart
+6. Exit
                            
 Choose option (1-5): """) # Choice of what they want to do
         if choice == 1: # If they pick choice 1
@@ -93,7 +98,10 @@ Choose option (1-5): """) # Choice of what they want to do
         elif choice == 4: # If they pick choice 4
             pass
         elif choice == 5: # If they pick choice 5
+            pass
+        elif choice == 6: # If they pick choice 6
             end("Bye bye!") # Exits/Ends program
         else:
             input("Invalid Input! (Choost an integer from 1 to 5)\nPress enter to continue") # Error handling
 
+main()
