@@ -21,7 +21,7 @@ def export(acc):
                 return acc
         else: return False
 def load(name):
-    if name != False:
+    if export(name) != False:
         acc={'name':[],'date':[],'expense_source':[],'expense_amount':[],'income_source':[],'income_amount':[],'saving goals':[], 'saving goal amount':[], 'budget_limits':[], 'budget_limit_amount':[]}
         li=list(acc.keys())
         with open(f"{name}.csv","r",newline='') as file:
