@@ -22,7 +22,6 @@ def main():
     def currency_convert(currency1,currency2,amount):     
         currency1=currency1.upper()
         currency2=currency2.upper()
-        
         try: 
             amount=float(amount)
             if amount>0:
