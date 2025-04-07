@@ -2,7 +2,7 @@
 import math  
 
 
-def main():
+def main(): # Main function for converting currency
     currencies = {  
     'USD': 1,  
     'EUR': 1.08,  
@@ -13,16 +13,16 @@ def main():
     'CAD': 0.70,  
     'CHF': 1.14,  
     'HKD': 0.13,  
-    'NZD': 0.58  }
+    'NZD': 0.58  } # List of different currencies and their relation to the USD dollar
     for x in list(currencies.keys()):
         print(x)
-    currency1 = input("what currency do you want?")
+    currency1 = input("what currency do you want?") # Inputs for the user
     currency2 = input("what currency do you want?")
     amount = input("how much do you want?")
     def currency_convert(currency1,currency2,amount):     
         currency1=currency1.upper()
         currency2=currency2.upper()
-        try: 
+        try: # Error handling
             amount=float(amount)
             if amount>0:
                 if currency1 in list(currencies.keys()) and currency2 in list(currencies.keys()):
@@ -31,8 +31,8 @@ def main():
                     return (f"{amount} {currency2}")
                 else: return 'invalid currency',False
             else:
-                return 'invalid amount',False
-        except: return 'not a number',False
+                return 'invalid amount',False # Checking for invalid amount of mo
+        except: return 'not a number',False # Checking for not a number
     output=currency_convert(currency1,currency2,amount)
     if output(1)==False: main()
     else: print(output)

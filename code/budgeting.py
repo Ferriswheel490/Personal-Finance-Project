@@ -1,6 +1,6 @@
 # Evan - Budgeting
 
-#from advanced_visuals import *
+from advanced_visuals import *
 
 #Budgeting Function:
 def budgeting(money):
