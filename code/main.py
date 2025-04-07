@@ -13,6 +13,15 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
+# This is a variable needed for the budgeting function:
+budget = {
+    "Rent": 0,
+    "Food": 0,
+    "Gas": 0,
+    "Spending": 0,
+    "Saving": 0
+}
+
 
 # I moved the password handling to the account handling file -Cecily
 
