@@ -31,7 +31,7 @@ Financial Manager
 5. Show pie chart
 6. Exit
                            
-Choose option (1-5): """) # Choice of what they want to do
+Choose option (1-6): """) # Choice of what they want to do
         if choice == 1: # If they pick choice 1
             currency_convert()
         elif choice == 2: # If they pick choice 2
