@@ -42,6 +42,7 @@ Financial Manager
 6. Exit
                            
 Choose option (1-6): """) # Choice of what they want to do
+<<<<<<< HEAD
         if choice == 1: # Currency conversion
             currency_convert()
         elif choice == 2: # Budgeting
@@ -51,6 +52,17 @@ Choose option (1-6): """) # Choice of what they want to do
         elif choice == 4: # saving goal tracker
             savingsGoalTracker(account, savingsGoal)
         elif choice == 5: # pie chart
+=======
+        if choice == 1: # If they pick choice 1
+            currency_convert() #cecily
+        elif choice == 2: # If they pick choice 2
+            budgeting(0)
+        elif choice == 3: # If they pick choice 3
+            income_expense(account) #cecily
+        elif choice == 4: # If they pick choice 4
+            pass
+        elif choice == 5: # If they pick choice 5
+>>>>>>> 782aa656ad6a79e22d090ca319b9e731b4b8c91f
             pie([16, 16, 16, 16, 16, 20],['A', 'B', 'C', 'D', 'E','F'],['red', 'orange', 'yellow', 'green', 'blue','purple'],"Test Title")
         elif choice == 6: # exit
             end("Bye bye!") # Exits/Ends program
