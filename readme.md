@@ -21,46 +21,14 @@ ___
 
 ## Current Features
 ___
-First feature I am proud of
-Second feature I am proud of
-Third feature I am proud of  
-Fourth feature I am proud of  
-Fifth feature I am proud of
-Sixth feature I am proud of
-Seventh feature I am proud of
-Eighth feature I am proud of
-Ninth feature I am proud of
-Tenth feature I am proud of
-Eleventh feature I am proud of
-Twelfth feature I am proud of
-Thirteenth feature I am proud of
-Fourteenth feature I am proud of
-Fifteenth feature I am proud of
-Sixteenth feature I am proud of
-Seventeenth feature I am proud of
-Eighteenth feature I am proud of
-Nineteenth feature I am proud of
-Twentieth feature I am proud of
-Twenty-first feature I am proud of
-Twenty-second feature I am proud of
-Twenty-third feature I am proud of
-Twenty-fourth feature I am proud of
-Twenty-fifth feature I am proud of
-Twenty-sixth feature I am proud of
-Twenty-seventh feature I am proud of
-Twenty-eighth feature I am proud of
-Twenty-ninth feature I am proud of
-Thirtieth feature I am proud of
-Thirty-first feature I am proud of
-Thirty-second feature I am proud of
-Thirty-third feature I am proud of
-Thirty-fourth feature I am proud of
+Ways to save and load accounts to an exterior database
+
 
 ## Contributers
 ___
 + Fairus De La Cruz - what they did
 + Evan McCabe - what they did
-+ Cecily Strong - what they did  
++ Cecily Strong - Made the account handling. Saving accounts, loading accounts, creating new accounts, ect. She made the income and expense handling. She also made the currency conversion,
 + Jackson Hauley - what they did  
 
 ## Author's Information
