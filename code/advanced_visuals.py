@@ -12,7 +12,7 @@ def plot(x_list, y_list, x_title, y_title, plot_title):
     plt.title(plot_title)
     plt.show() #shows plot
 
-plot([1, 2, 3, 4, 5],[2, 4, 1, 3, 5],"x axis title","y axis title","title") # Test Graph
+#plot([1, 2, 3, 4, 5],[2, 4, 1, 3, 5],"x axis title","y axis title","title") # Test Graph
 
 
 # This is for printing PIE CHARTS, you do the sizes of each slice, the labels, colors, and the title of the graph all in respective order
@@ -22,4 +22,4 @@ def pie(sizes, labels, colors, title):
     plt.title(title) # Sets the title
     plt.show()
 
-pie([25, 30, 15, 10, 20],['A', 'B', 'C', 'D', 'E'],['gold', 'yellowgreen', 'lightcoral', 'lightskyblue', 'orange'],"Test Title") # Test Graph
+#pie([25, 30, 15, 10, 20],['A', 'B', 'C', 'D', 'E'],['gold', 'yellowgreen', 'lightcoral', 'lightskyblue', 'orange'],"Test Title") # Test Graph

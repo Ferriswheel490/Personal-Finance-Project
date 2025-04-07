@@ -120,4 +120,4 @@ def budgeting(money):
         #Exit this function and return to the main page:
         pass
 
-budgeting(3000)
+#budgeting(3000)
