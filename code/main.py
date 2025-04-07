@@ -18,6 +18,7 @@ import numpy as np
 
 def main(): # Main function that runs the UI
     account=sign_in()
+    if account==False: return
     while True:
         cs() # Clears the screen (cleaner UI)
         choice = int_input("""
@@ -36,7 +37,7 @@ Choose option (1-6): """) # Choice of what they want to do
         elif choice == 2: # If they pick choice 2
             budgeting(0)
         elif choice == 3: # If they pick choice 3
-            pass
+            income_expense(account)
         elif choice == 4: # If they pick choice 4
             pass
         elif choice == 5: # If they pick choice 5
