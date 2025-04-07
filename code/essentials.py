@@ -1,4 +1,4 @@
-# Essential Functions
+# Jacksons Essential Functions
 
 def cs(): # Clears the screen
     print("\033c",end="")
