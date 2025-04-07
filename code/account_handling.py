@@ -147,7 +147,7 @@ def sign_in():
 def create_account():
     username = input("Choose a username: ")
     
-    if export(username) == False:
+    if export(username) != False:
         print("Username already taken. Try again.")
         return create_account()
     else:
@@ -156,5 +156,5 @@ def create_account():
         return load(username)
 
 # We need a function that takes username and password and either makes a new account with a setup process or loads the old account into a master list -Jackson
-
-
+debug()
+sign_in()
