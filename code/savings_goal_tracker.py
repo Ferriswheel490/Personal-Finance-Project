@@ -1,4 +1,5 @@
 # Evan - Savings Goal Tracker
+from account_handling import *
 
 #TEMPORARY FOR TESTING:
 budget = {
@@ -15,8 +16,22 @@ savingsGoal = {
     "Cost": 0
 }
 
+name='evan' #evan make an account and then have the name here pretty please <3
+x=0 #whichever savings goal you want :)
+account=export(name)
+item =  account['saving goals'][x]
+cost =  account['saving goal amount'][x]
+
+savingsGoal={
+    "Item": item,
+    "Cost": cost
+}
+
 #Savings Goal Tracker Function:
-def savingsGoalTracker(budget, savingsGoal):
+def savingsGoalTracker(account, savingsGoal):
+    money=account['total_funds'][-1]
+    change={'name':'','date':'','total_funds':'','expense_source':'','expense_amount':'','income_source':'','income_amount':'','saving goals':'', 'saving goal amount':'', 'budget_limits':'', 'budget_limit_amount':''}
+    #you are only using 'saving goals':'', 'saving goal amount':''
 
     #Ask the user if they want to set a savings goal or check their progress towards the goal:
     whichOne = input("\nWould you like to set a savings goal or check your progress towards your savings goal?\n1. Set a Savings Goal\n2. Check Progress Towards Savings Goal\n")
@@ -67,10 +82,11 @@ def savingsGoalTracker(budget, savingsGoal):
         isFloat(savingsGoalCost)
 
         #Set the user’s new saving goal in the saving goal dictionary:
-        savingsGoal = {
-            "Item": savingsGoalItem,
-            "Cost": savingsGoalCost
-        }
+        
+        change['saving goals']= savingsGoalItem
+        change['saving goal amount']= savingsGoalCost
+        
+        save(account,change)
 
     #If they want to check their progress towards their savings goal:
     if whichOne == 2:
@@ -82,3 +98,6 @@ def savingsGoalTracker(budget, savingsGoal):
 
         #Show the user how much money is in their savings compared to how much their savings goal cost:
         print(f"You have ${budget["Savings"]} in your savings, and you need ${savingsGoal["Cost"]} to buy your {savingsGoal["Item"]}.")
+
+#for testing
+savingsGoalTracker(account, savingsGoal)

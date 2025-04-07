@@ -5,8 +5,9 @@ from income_expense_handling import income_expense
 #from savings_goal_tracker import savings_tracker
 from advanced_visuals import *
 from essentials import * # Imports cs() (clear screen), int_input() (for integer inputs error handling), end(message) ends the program wiht a message
-from account_handling import *
+from account_handling import save
 from cecilys_helpers import debug
+from savings_goal_tracker import savingsGoalTracker
 
 import csv
 import os
@@ -25,8 +26,8 @@ budget = {
 
 # I moved the password handling to the account handling file -Cecily
 
-def main(): # Main function that runs the UI
-    account=sign_in()
+def main(savingsGoal): # Main function that runs the UI
+    account = sign_in()
     if account==False: return
     while True:
         cs() # Clears the screen (cleaner UI)
@@ -41,17 +42,17 @@ Financial Manager
 6. Exit
                            
 Choose option (1-6): """) # Choice of what they want to do
-        if choice == 1: # If they pick choice 1
+        if choice == 1: # Currency conversion
             currency_convert()
-        elif choice == 2: # If they pick choice 2
+        elif choice == 2: # Budgeting
             budgeting(0)
-        elif choice == 3: # If they pick choice 3
+        elif choice == 3: # Income and expense handling
             income_expense(account)
-        elif choice == 4: # If they pick choice 4
-            pass
-        elif choice == 5: # If they pick choice 5
+        elif choice == 4: # saving goal tracker
+            savingsGoalTracker(account, savingsGoal)
+        elif choice == 5: # pie chart
             pie([16, 16, 16, 16, 16, 20],['A', 'B', 'C', 'D', 'E','F'],['red', 'orange', 'yellow', 'green', 'blue','purple'],"Test Title")
-        elif choice == 6: # If they pick choice 6
+        elif choice == 6: # exit
             end("Bye bye!") # Exits/Ends program
         else:
             input("Invalid Input! (Choost an integer from 1 to 5)\nPress enter to continue") # Error handling

@@ -7,6 +7,7 @@ import datetime
 # name is just the name for the account you want
 # NOTE: dont have two accounts have the same name 
 # intended to be used with a print statment
+
 def new_acc(name,password): 
     try:
         exist = export(name)
@@ -156,5 +157,5 @@ def create_account():
         return load(username)
 
 # We need a function that takes username and password and either makes a new account with a setup process or loads the old account into a master list -Jackson
-debug()
+new_acc('evan','password')
 sign_in()
