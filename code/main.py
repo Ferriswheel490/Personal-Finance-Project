@@ -39,7 +39,8 @@ Choose option (1-6): """) # Choice of what they want to do
         elif choice == 3: # If they pick choice 3
             income_expense(account)
         elif choice == 4: # If they pick choice 4
-            pass
+            print("sorry Evan hasn't done that part of his code yet come back when he is done")
+            return main()
         elif choice == 5: # If they pick choice 5
             pie([16, 16, 16, 16, 16, 20],['A', 'B', 'C', 'D', 'E','F'],['red', 'orange', 'yellow', 'green', 'blue','purple'],"Test Title")
         elif choice == 6: # If they pick choice 6
