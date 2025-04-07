@@ -1,5 +1,6 @@
 #Cecily Strong income expense handling
 from account_handling import *
+from essentials import int_input
 def income_expense(dic):
     #display(dic) #for debugging
     #inc_exp={'expenses':[],'income':[]}
@@ -44,8 +45,7 @@ def income_expense(dic):
             save(dic,new)
             return dic
         if num == 3: #compare
-            #year=int(input("what year do you want to see finances for?\n"))
-            year=2025
+            year=int_input("what year do you want to see finances for?\n")
             temp=[]
             for x in dic['date']:
                 if dic['date'][dic['date'].index(x)][0:3] == str(year):
