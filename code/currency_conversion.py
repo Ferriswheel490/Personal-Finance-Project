@@ -1,8 +1,10 @@
 #Cecily Strong currency conversion
 import math  
+from essentials import cs
 
 
 def main(): # Main function for converting currency
+    cs()
     currencies = {  
     'USD': 1,  
     'EUR': 1.08,  
