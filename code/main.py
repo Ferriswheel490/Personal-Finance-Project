@@ -33,11 +33,11 @@ Financial Manager
                            
 Choose option (1-6): """) # Choice of what they want to do
         if choice == 1: # If they pick choice 1
-            currency_convert()
+            currency_convert() #cecily
         elif choice == 2: # If they pick choice 2
             budgeting(0)
         elif choice == 3: # If they pick choice 3
-            income_expense(account)
+            income_expense(account) #cecily
         elif choice == 4: # If they pick choice 4
             pass
         elif choice == 5: # If they pick choice 5
