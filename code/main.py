@@ -15,7 +15,7 @@ import numpy as np
 
 # I moved the password handling to the account handling file -Cecily
 
-def main(t): # Main function that runs the UI
+def main(): # Main function that runs the UI
     account=sign_in()
     while True:
         cs() # Clears the screen (cleaner UI)
