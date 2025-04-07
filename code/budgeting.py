@@ -156,3 +156,5 @@ def budgeting(money, budget):
 
     #TEMP FOR TESTING:
     budgeting(money, budget)
+
+budgeting(3000, budget)
