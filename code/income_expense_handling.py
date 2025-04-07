@@ -63,5 +63,6 @@ def income_expense(dic):
 
 
 #debug()
+'''
 print(income_expense(load('a')))
-print(income_expense(load('test')))
+print(income_expense(load('test')))'''

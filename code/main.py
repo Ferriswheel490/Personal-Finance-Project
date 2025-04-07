@@ -2,10 +2,11 @@
 from budgeting import budgeting
 from currency_conversion import main as currency_convert
 from income_expense_handling import income_expense
-from savings_goal_tracker import savings_tracker
+#from savings_goal_tracker import savings_tracker
 from advanced_visuals import *
 from essentials import * # Imports cs() (clear screen), int_input() (for integer inputs error handling), end(message) ends the program wiht a message
 from account_handling import *
+from cecilys_helpers import debug
 
 import csv
 import os
@@ -15,7 +16,7 @@ import numpy as np
 
 # I moved the password handling to the account handling file -Cecily
 
-def main(t): # Main function that runs the UI
+def main(): # Main function that runs the UI
     account=sign_in()
     while True:
         cs() # Clears the screen (cleaner UI)
@@ -49,4 +50,5 @@ Choose option (1-5): """) # Choice of what they want to do
 # Run the sign-in function
 
 # run main after signing in
+#debug()
 main()
