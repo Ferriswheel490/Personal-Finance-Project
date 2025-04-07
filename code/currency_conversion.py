@@ -39,5 +39,3 @@ def main(): # Main function for converting currency
     if output(1)==False: main()
     else: print(output)
     return
-
-
