@@ -50,8 +50,6 @@ Financial Manager
 Choose option (1-6): """) # Choice of what they want to do
 
         if choice == 1: # Currency conversion
-
-        if choice == 1: # Currency conversion
             currency_convert()
         elif choice == 2: # Budgeting
             budgeting(0)
