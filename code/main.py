@@ -5,9 +5,9 @@ from income_expense_handling import income_expense
 #from savings_goal_tracker import savings_tracker
 from advanced_visuals import *
 from essentials import * # Imports cs() (clear screen), int_input() (for integer inputs error handling), end(message) ends the program wiht a message
-from account_handling import save
+from account_handling import save, sign_in
 from cecilys_helpers import debug
-from savings_goal_tracker import savingsGoalTracker
+from savings_goal_tracker import savingsGoalTracker, savingsGoal
 
 import csv
 import os
@@ -30,10 +30,6 @@ budget = {
 def main(): # Main function that runs the UI
     account=sign_in()
     if account == False: end("Bye bye!")
-
-def main(savingsGoal): # Main function that runs the UI
-    account = sign_in()
-    if account==False: return
 
     while True:
         cs() # Clears the screen (cleaner UI)

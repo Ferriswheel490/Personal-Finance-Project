@@ -16,7 +16,7 @@ def new_acc(name,password):
         header=['name','date','total_funds','expense_source','expense_amount','income_source','income_amount','amount','saving goals', 'saving goal amount', 'budget_limits', 'budget_limit_amount']
         with open(f"{name}.csv","w",newline='') as file1:
             writer=csv.DictWriter(file1,fieldnames=header)
-            writer.writeheader()
+            writer.writeheader()    
             writer.writerow({'name':name,'date':'0','total_funds':'0','expense_source':'0','expense_amount':'0','income_source':'0','income_amount':'0','saving goals':'0', 'saving goal amount':'0', 'budget_limits':'0', 'budget_limit_amount':'0'})
         with open(f"Personal-Finance-Project/code/acc_names.csv","a") as file:
             file.write(f"\n{name},{password}")
