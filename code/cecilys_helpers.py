@@ -5,7 +5,7 @@ def debug():
     def trace_calls(frame,event,argument):
         func=frame.f_code.co_name
         ignore=['__init__','_shutdown','ident','_stop','daemon','_maintain_shutdown_locks','<listcomp>']
-        if func in ignore:
+        if func in ignore or func[0]=='_' or func[0]=='<':
             pass
         else:
             if event == 'call': #when function is called

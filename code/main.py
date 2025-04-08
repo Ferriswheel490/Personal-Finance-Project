@@ -1,4 +1,5 @@
 # Cecily/Evan/Hasan/Jackson - Main File
+from cecilys_helpers import debug
 from budgeting import budgeting
 from currency_conversion import main as currency_convert
 from income_expense_handling import income_expense
@@ -6,7 +7,7 @@ from income_expense_handling import income_expense
 from advanced_visuals import *
 from essentials import * # Imports cs() (clear screen), int_input() (for integer inputs error handling), end(message) ends the program wiht a message
 from account_handling import *
-from cecilys_helpers import debug
+
 from account_handling import save, sign_in
 from cecilys_helpers import debug
 from savings_goal_tracker import savingsGoalTracker, savingsGoal
