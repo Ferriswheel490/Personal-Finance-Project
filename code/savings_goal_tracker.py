@@ -19,7 +19,7 @@ savingsGoal = {
 
 name='evan' #evan make an account and then have the name here pretty please <3
  #whichever savings goal you want :)
-account=export(name)
+account=load(name)
 
 #fetching all the goals and amounts
 
@@ -28,6 +28,7 @@ account=export(name)
 
 #Savings Goal Tracker Function:
 def savingsGoalTracker(budget,account):
+    print(account)
     print(account)
     #money=account['total_funds'][-1]
     change={'name':'','date':'','total_funds':'','expense_source':'','expense_amount':'','income_source':'','income_amount':'','saving goals':'', 'saving goal amount':'', 'budget_limits':'', 'budget_limit_amount':''}
@@ -105,6 +106,7 @@ def savingsGoalTracker(budget,account):
 
         #have the user choose a savings goal to set
         for x in savingsGoals:
+            print(x)
             print(f"{savingsGoals.index(x)}. {x} ({savingAmounts[savingsGoals.index(x)]})")
         x=int(input(''))
 
