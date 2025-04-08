@@ -105,9 +105,6 @@ def budgeting(account, budget):
     #If the user chose to compare expenses to budget:
     if budgetChoice == 2:
 
-        #Temp:
-        print(budget)
-
         #Ask the user what their expense is:
         expenseThing = input("\nWhat thing are you aiming to buy?\n")
 
@@ -154,7 +151,11 @@ def budgeting(account, budget):
         #Exit this function and return to the main page:
         pass
 
+<<<<<<< HEAD
     #TEMP FOR TESTING:
     budgeting(money, budget)
 
 budgeting(load('test'), budget)
+=======
+budgeting(3000, budget)
+>>>>>>> 2319747ecc5585b1d1394388dbffc37198ed80e6
