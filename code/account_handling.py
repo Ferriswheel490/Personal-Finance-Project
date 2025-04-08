@@ -42,7 +42,7 @@ def load(name): #this is intended just for fetching a list that you can append t
     if export(name) != False:
         acc={'name':[],'date':[],'total_funds':[],'expense_source':[],'expense_amount':[],'income_source':[],'income_amount':[],'saving goals':[], 'saving goal amount':[], 'rent':[], 'rent_amount':[],'food':[],'food_amount':[],'gas':[],'gas_amount':[],'spending':[],'spending_amount':[],'saving':[],'saving_amount':[]}
         li=list(acc.keys())
-        with open(f"{name}.csv","r",newline='') as file:
+        with open(USER_FILE,"r",newline='') as file:
             reader=csv.reader(file)
             next(reader)
             for row in reader:
@@ -63,7 +63,7 @@ def save(name,update):
         formatted_date = today.strftime("%Y/%m/%d")
         update['name'] = name
         update['date'] = formatted_date
-        with open(f"{name}.csv","a",newline='') as file:
+        with open(USER_FILE,"a",newline='') as file:
             writer=csv.DictWriter(file,fieldnames=['name','date','total_funds','expense_source','expense_amount','income_source','income_amount','amount','saving goals', 'saving goal amount', 'rent', 'rent_amount','food','food_amount','gas','gas_amount','spending','spending_amount','saving','saving_amount'])
             writer.writerow(update)
 

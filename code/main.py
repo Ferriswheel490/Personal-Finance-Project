@@ -71,4 +71,6 @@ Choose option (1-6): """) # Choice of what they want to do
 
 
 #debug()
+purge()
+new_acc('test','password')
 main() 
