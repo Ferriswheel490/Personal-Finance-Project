@@ -61,16 +61,6 @@ Choose option (1-6): """) # Choice of what they want to do
             pie([16, 16, 16, 16, 16, 20],['A', 'B', 'C', 'D', 'E','F'],['red', 'orange', 'yellow', 'green', 'blue','purple'],"Test Title")
         elif choice == 6: # Exits/Ends program
             end("Bye bye!") # 
-        elif choice == 4: # If they pick choice 4
-            print("sorry Evan hasn't done that part of his code yet come back when he is done")
-            return main()
-
-        elif choice == 5: # If they pick choice 5
-
-            pie([16, 16, 16, 16, 16, 20],['A', 'B', 'C', 'D', 'E','F'],['red', 'orange', 'yellow', 'green', 'blue','purple'],"Test Title")
-        elif choice == 6: # exit
-            end("Bye bye!") # Exits/Ends program
-
         else:
             input("Invalid Input! (Choost an integer from 1 to 6)\nPress enter to continue") # Error handling
 
