@@ -19,7 +19,7 @@ savingsGoal = {
 
 name='evan' #evan make an account and then have the name here pretty please <3
  #whichever savings goal you want :)
-account=export(name)
+account=load(name)
 
 #fetching all the goals and amounts
 
