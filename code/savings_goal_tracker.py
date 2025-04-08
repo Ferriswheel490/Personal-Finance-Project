@@ -119,5 +119,5 @@ def savingsGoalTracker(budget,account):
         print(f"You have $x in your savings, and you need $x to buy your x.")
 
 #for testing
-while True:
-    savingsGoalTracker(budget,account)
+#while True:
+#    savingsGoalTracker(budget,account)
