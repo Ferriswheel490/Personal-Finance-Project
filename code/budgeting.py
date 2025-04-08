@@ -155,6 +155,3 @@ def budgeting(account, budget):
     budgeting(money, budget)
 
 budgeting(load('test'), budget)
-
-budgeting(3000, budget)
-budgeting(3000, budget)
