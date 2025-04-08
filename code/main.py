@@ -5,9 +5,14 @@ from income_expense_handling import income_expense
 #from savings_goal_tracker import savings_tracker
 from advanced_visuals import *
 from essentials import * # Imports cs() (clear screen), int_input() (for integer inputs error handling), end(message) ends the program wiht a message
+<<<<<<< HEAD
+from account_handling import *
+from cecilys_helpers import debug
+=======
 from account_handling import save, sign_in
 from cecilys_helpers import debug
 from savings_goal_tracker import savingsGoalTracker, savingsGoal
+>>>>>>> 2319747ecc5585b1d1394388dbffc37198ed80e6
 
 import csv
 import os
@@ -26,11 +31,17 @@ budget = {
 
 # I moved the password handling to the account handling file -Cecily
 
+<<<<<<< HEAD
+def main(): # Main function that runs the UI
+    account=sign_in()
+    if account == False: end("Bye bye!")
+=======
 
 def main(): # Main function that runs the UI
     account=sign_in()
     if account == False: end("Bye bye!")
 
+>>>>>>> 2319747ecc5585b1d1394388dbffc37198ed80e6
     while True:
         cs() # Clears the screen (cleaner UI)
         choice = int_input("""
@@ -44,6 +55,17 @@ Financial Manager
 6. Exit
                            
 Choose option (1-6): """) # Choice of what they want to do
+<<<<<<< HEAD
+        if choice == 1: # Currency conversion
+            currency_convert() #cecily
+        elif choice == 2: # Budgeting
+            budgeting(0)
+        elif choice == 3: # Income and expenses handling
+            income_expense(account) #cecily
+        elif choice == 4: # Saving goal tracker
+            pass
+        elif choice == 5: # Show pie chart
+=======
 
         if choice == 1: # Currency conversion
             currency_convert()
@@ -54,6 +76,7 @@ Choose option (1-6): """) # Choice of what they want to do
         elif choice == 4: # saving goal tracker
             savingsGoalTracker(account, savingsGoal)
         elif choice == 5: # pie chart
+>>>>>>> 2319747ecc5585b1d1394388dbffc37198ed80e6
             pie([16, 16, 16, 16, 16, 20],['A', 'B', 'C', 'D', 'E','F'],['red', 'orange', 'yellow', 'green', 'blue','purple'],"Test Title")
         elif choice == 6: # Exits/Ends program
             end("Bye bye!") # 

@@ -2,8 +2,8 @@
 
 # from advanced_visuals import *
 # JACKSON FIX THIS LATER ^
-
-#TEMPORARY FOR TESTING:
+from account_handling import load
+#TEMPORARY FOR TES iTING:
 budget = {
     "Rent": 0,
     "Food": 0,
@@ -13,8 +13,8 @@ budget = {
 }
 
 #Budgeting Function:
-def budgeting(money, budget):
-
+def budgeting(account, budget):
+    money=account['total_funds']
     #Inner function to check if a variable is an integer, and, if so, make it an integer:
     def isInt(var):
         try:
@@ -151,4 +151,11 @@ def budgeting(money, budget):
         #Exit this function and return to the main page:
         pass
 
+<<<<<<< HEAD
+    #TEMP FOR TESTING:
+    budgeting(money, budget)
+
+budgeting(load('test'), budget)
+=======
 budgeting(3000, budget)
+>>>>>>> 2319747ecc5585b1d1394388dbffc37198ed80e6
