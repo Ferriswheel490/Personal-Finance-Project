@@ -19,7 +19,7 @@ def new_acc(name,password):
             writer=csv.DictWriter(file1,fieldnames=header)
             writer.writeheader()
             writer.writerow({'name':name,'date':'0','total_funds':'0','expense_source':'0','expense_amount':'0','income_source':'0','income_amount':'0','saving goals':'0', 'saving goal amount':'0', 'rent':'0', 'rent_amount':'0','food':'0','food_amount':'0','gas':'0','gas_amount':'0','spending':'0','spending_amount':'0','saving':'0','saving_amount':'0'})
-        with open(f"code/acc_names.csv","a") as file:
+        with open(f"Personal-Finance-Project/code/acc_names.csv","a") as file:
             file.write(f"\n{name},{password}")
         return 'Account successfully created'
     else:
@@ -77,21 +77,21 @@ def display(dic):
             print(f"{x}:{dic[x]}")
 
 def purge(): #deletes ALL accounts. use with caution
-    with open(f"code/acc_names.csv","r") as file:
+    with open(f"Personal-Finance-Project/code/acc_names.csv","r") as file:
         reader=csv.reader(file)
         next(reader)
         for name in reader:
             try:
                 os.remove(f"{name[0]}.csv")
             except: pass
-    with open(f"code/acc_names.csv","w") as file:
+    with open(f"Personal-Finance-Project/code/acc_names.csv","w") as file:
         writer=csv.writer(file)
         writer.writerow(['name','password'])
 
 
 #----------------------JACKSON----------------------------------
 
-USER_FILE = "code/acc_names.csv"
+USER_FILE = "Personal-Finance-Project/code/acc_names.csv"
 #theres a bug when you just have it use code/acc_names now, idk why -Cecily
 
 # Check if CSV file exists, create it if not  
