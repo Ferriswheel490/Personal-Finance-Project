@@ -3,7 +3,6 @@ import csv
 import os
 from cecilys_helpers import debug
 import datetime
-from essentials import cs
 
 # name is just the name for the account you want
 # NOTE: dont have two accounts have the same name 
@@ -15,11 +14,11 @@ def new_acc(name,password):
     except: exist = False
     if exist == False:
         header=['name','date','total_funds','expense_source','expense_amount','income_source','income_amount','amount','saving goals', 'saving goal amount', 'rent', 'rent_amount','food','food_amount','gas','gas_amount','spending','spending_amount','saving','saving_amount']
-        with open(f"{name}.csv","x",newline='') as file1:
+        with open(f"{name}.csv","w",newline='') as file1:
             writer=csv.DictWriter(file1,fieldnames=header)
             writer.writeheader()
             writer.writerow({'name':name,'date':'0','total_funds':'0','expense_source':'0','expense_amount':'0','income_source':'0','income_amount':'0','saving goals':'0', 'saving goal amount':'0', 'rent':'0', 'rent_amount':'0','food':'0','food_amount':'0','gas':'0','gas_amount':'0','spending':'0','spending_amount':'0','saving':'0','saving_amount':'0'})
-        with open(f"code/acc_names.csv","a") as file:
+        with open(f"Personal-Finance-Project/code/acc_names.csv","a") as file:
             file.write(f"\n{name},{password}")
         return 'Account successfully created'
     else:
@@ -27,7 +26,7 @@ def new_acc(name,password):
 
 # acc is the name of the account you want to fetch, dont use .csv (for example, load('test'))
 def export(acc): #this checks if the account exists
-    with open(f"Personal-Finance-Project\code/acc_names.csv","r") as file:
+    with open(f"Personal-Finance-Project/code/acc_names.csv","r") as file:
         reader=csv.reader(file)
         #next(reader)
         for row in reader:
@@ -42,7 +41,7 @@ def load(name): #this is intended just for fetching a list that you can append t
     if export(name) != False:
         acc={'name':[],'date':[],'total_funds':[],'expense_source':[],'expense_amount':[],'income_source':[],'income_amount':[],'saving goals':[], 'saving goal amount':[], 'rent':[], 'rent_amount':[],'food':[],'food_amount':[],'gas':[],'gas_amount':[],'spending':[],'spending_amount':[],'saving':[],'saving_amount':[]}
         li=list(acc.keys())
-        with open(USER_FILE,"r",newline='') as file:
+        with open(f"{name}.csv","r",newline='') as file:
             reader=csv.reader(file)
             next(reader)
             for row in reader:
@@ -53,7 +52,7 @@ def load(name): #this is intended just for fetching a list that you can append t
         return acc
     else: 
         return False
-
+load('test')
 # NOTE: you can only save one savings goal, budget limit, income, ect at a time. do it every time your function runs before you return, perhaps?
 # name is the account dictionary, you can just do this easily with the export command and the name
 # update is the update you want, so not the entire dictionary, just the latest addition
@@ -65,7 +64,7 @@ def save(name,update):
         formatted_date = today.strftime("%Y/%m/%d")
         update['name'] = name
         update['date'] = formatted_date
-        with open(USER_FILE,"a",newline='') as file:
+        with open(f"{name}.csv","a",newline='') as file:
             writer=csv.DictWriter(file,fieldnames=['name','date','total_funds','expense_source','expense_amount','income_source','income_amount','amount','saving goals', 'saving goal amount', 'rent', 'rent_amount','food','food_amount','gas','gas_amount','spending','spending_amount','saving','saving_amount'])
             writer.writerow(update)
 
@@ -77,21 +76,21 @@ def display(dic):
             print(f"{x}:{dic[x]}")
 
 def purge(): #deletes ALL accounts. use with caution
-    with open(f"code/acc_names.csv","r") as file:
+    with open(f"Personal-Finance-Project/code/acc_names.csv","r") as file:
         reader=csv.reader(file)
         next(reader)
         for name in reader:
             try:
                 os.remove(f"{name[0]}.csv")
             except: pass
-    with open(f"code/acc_names.csv","w") as file:
+    with open(f"Personal-Finance-Project/code/acc_names.csv","w") as file:
         writer=csv.writer(file)
         writer.writerow(['name','password'])
 
 
 #----------------------JACKSON----------------------------------
 
-USER_FILE = "code/acc_names.csv"
+USER_FILE = "Personal-Finance-Project/code/acc_names.csv"
 #theres a bug when you just have it use code/acc_names now, idk why -Cecily
 
 # Check if CSV file exists, create it if not  
@@ -124,11 +123,10 @@ def load_users():
 
 # Sign-in function
 def sign_in():
-    cs()
     users = load_users()
     while True:
         has_account = input("Do you have an account? (yes/no): ").strip().lower()
-
+        
         if has_account == "no":
                 create = input("Do you want to create one? (yes/no): ").strip().lower()
                 if create == "yes":
@@ -141,7 +139,7 @@ def sign_in():
             password = input("Enter your password: ")
 
             if username in users and users[username] == password:
-                print(f"Login successful! Welcome back, {username}!")
+                print(f"Login successful! Welcome back, {username}")
                 return load(username)
             else:
                 print("Invalid username or password.")
@@ -164,5 +162,3 @@ def create_account():
 # We need a function that takes username and password and either makes a new account with a setup process or loads the old account into a master list -Jackson
 #new_acc('evan','password')
 #sign_in()'''
-#purge()
-#print(new_acc('test','password'))
