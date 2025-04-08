@@ -151,4 +151,4 @@ def budgeting(account, budget):
         #Exit this function and return to the main page:
         pass
 
-budgeting(3000, budget)
+budgeting(load('test'), budget)
