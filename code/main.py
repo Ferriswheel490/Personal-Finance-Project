@@ -60,7 +60,7 @@ Choose option (1-6): """) # Choice of what they want to do
         elif choice == 3: # Income and expenses handling
             income_expense(account) #cecily
         elif choice == 4: # Saving goal tracker
-            pass
+           savingsGoalTracker(budget,account)
         elif choice == 5: # Show pie chart
             pie([16, 16, 16, 16, 16, 20],['A', 'B', 'C', 'D', 'E','F'],['red', 'orange', 'yellow', 'green', 'blue','purple'],"Test Title")
         elif choice == 6: # Exits/Ends program
