@@ -39,7 +39,11 @@ def export(acc): #this checks if the account exists
 # name is the name of the account you want to fetch, dont use .csv (for example, load('test'))
 def load(name): #this is intended just for fetching a list that you can append to and change
     if export(name) != False:
+<<<<<<< HEAD
         acc={'name':[],'date':[],'total_funds':[],'expense_source':[],'expense_amount':[],'income_source':[],'income_amount':[],'saving goals':[], 'saving goal amount':[],'rent':[], 'rent_amount':[],'food':[],'food_amount':[],'gas':[],'gas_amount':[],'spending':[],'spending_amount':[],'saving':[],'saving_amount':[]}
+=======
+        acc={'name':[],'date':[],'total_funds':[],'expense_source':[],'expense_amount':[],'income_source':[],'income_amount':[],'saving goals':[], 'saving goal amount':[], 'rent':[], 'rent_amount':[],'food':[],'food_amount':[],'gas':[],'gas_amount':[],'spending':[],'spending_amount':[],'saving':[],'saving_amount':[]}
+>>>>>>> dfb9ce9ad24e39bd6c8b0aceaa0d229cbf2b0a24
         li=list(acc.keys())
         with open(f"{name}.csv","r",newline='') as file:
             reader=csv.reader(file)

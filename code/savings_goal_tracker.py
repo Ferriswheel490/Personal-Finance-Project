@@ -28,13 +28,9 @@ account=load(name)
 
 #Savings Goal Tracker Function:
 def savingsGoalTracker(budget,account):
-    print(account)
-    print(account)
     #money=account['total_funds'][-1]
     change={'name':'','date':'','total_funds':'','expense_source':'','expense_amount':'','income_source':'','income_amount':'','saving goals':'', 'saving goal amount':'', 'budget_limits':'', 'budget_limit_amount':''}
     #you are only using 'saving goals':'', 'saving goal amount':''
-
-    
 
     #Ask the user if they want to set a savings goal or check their progress towards the goal:
     whichOne = input("\nWould you like to set a savings goal or check your progress towards your savings goal?\n1. Set a Savings Goal\n2. Check Progress Towards Savings Goal\n")
@@ -123,4 +119,5 @@ def savingsGoalTracker(budget,account):
         print(f"You have $x in your savings, and you need $x to buy your x.")
 
 #for testing
-savingsGoalTracker(budget,account)
+while True:
+    savingsGoalTracker(budget,account)
