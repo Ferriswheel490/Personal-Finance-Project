@@ -16,6 +16,8 @@ budget = {
 #Budgeting Function:
 def budgeting(account, budget):
     money=account['total_funds']
+    money = money[0]
+    money = float(money)
     #Inner function to check if a variable is an integer, and, if so, make it an integer:
     def isInt(var):
         try:
@@ -23,7 +25,7 @@ def budgeting(account, budget):
             return var
         except:
             print("\nINVALID INPUT\n\nPlease try again.")
-            budgeting(money, budget)
+            budgeting(account, budget)
 
     #Inner function to check if a variable is a float, and, if so, make it a float, ensuring there are only two decimal places:
     def isFloat(var):
@@ -32,11 +34,11 @@ def budgeting(account, budget):
             return var
         except:
             print("\nINVALID INPUT\n\nPlease try again.")
-            budgeting(money, budget)
+            budgeting(account, budget)
 
         if round(var, 2) != var:
             print("\nToo many decimal places!\n\nPlease try again.")
-            budgeting(money, budget)
+            budgeting(account, budget)
 
     #Ask the user if they want to set budget limits or compare expenses to budget:
     budgetChoice = input("\nWould you like to set budget limits or compare an expense to your budget?\n1. new budget\n2. compare expense to budget\n3. exit\n")
@@ -47,7 +49,7 @@ def budgeting(account, budget):
         pass
     else:
         print("\nThat's not an option!\n\nPlease try again.")
-        budgeting(money, budget)
+        budgeting(account, budget)
 
     #If the user chose to set budget limits:
     if budgetChoice == 1:
@@ -86,7 +88,7 @@ def budgeting(account, budget):
             print("\nThose numbers don't add up to your total money!\n\nPlease try again.")
 
             #Run the budgeting function to keep the program running:
-            budgeting(money, budget)
+            budgeting(account, budget)
 
         #If the user’s percentages/number amounts DO add up to 100% of the user’s total money:
         else:
@@ -130,7 +132,7 @@ def budgeting(account, budget):
             validOption = True
         if validOption == False:
             print("\nYou either made a spelling mistake, or did not choose a valid option.\n\nPlease try again.")
-            budgeting(money, budget)
+            budgeting(account, budget)
 
         #If the user DOES NOT have enough money in their budget for the expense:
         if expenseCost > budget[category]:
