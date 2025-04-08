@@ -3,7 +3,8 @@
 # from advanced_visuals import *
 # JACKSON FIX THIS LATER ^
 from account_handling import load
-#TEMPORARY FOR TES iTING:
+
+#TEMPORARY FOR TESTING:
 budget = {
     "Rent": 0,
     "Food": 0,
