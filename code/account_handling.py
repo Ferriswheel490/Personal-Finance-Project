@@ -14,7 +14,7 @@ def new_acc(name,password):
     except: exist = False
     if exist == False:
         header=['name','date','total_funds','expense_source','expense_amount','income_source','income_amount','amount','saving goals', 'saving goal amount', 'rent', 'rent_amount','food','food_amount','gas','gas_amount','spending','spending_amount','saving','saving_amount']
-        with open(f"{name}.csv","w",newline='') as file1:
+        with open(f"{name}.csv","x",newline='') as file1:
             writer=csv.DictWriter(file1,fieldnames=header)
             writer.writeheader()
             writer.writerow({'name':name,'date':'0','total_funds':'0','expense_source':'0','expense_amount':'0','income_source':'0','income_amount':'0','saving goals':'0', 'saving goal amount':'0', 'rent':'0', 'rent_amount':'0','food':'0','food_amount':'0','gas':'0','gas_amount':'0','spending':'0','spending_amount':'0','saving':'0','saving_amount':'0'})
@@ -39,11 +39,7 @@ def export(acc): #this checks if the account exists
 # name is the name of the account you want to fetch, dont use .csv (for example, load('test'))
 def load(name): #this is intended just for fetching a list that you can append to and change
     if export(name) != False:
-<<<<<<< HEAD
-        acc={'name':[],'date':[],'total_funds':[],'expense_source':[],'expense_amount':[],'income_source':[],'income_amount':[],'saving goals':[], 'saving goal amount':[],'rent':[], 'rent_amount':[],'food':[],'food_amount':[],'gas':[],'gas_amount':[],'spending':[],'spending_amount':[],'saving':[],'saving_amount':[]}
-=======
         acc={'name':[],'date':[],'total_funds':[],'expense_source':[],'expense_amount':[],'income_source':[],'income_amount':[],'saving goals':[], 'saving goal amount':[], 'rent':[], 'rent_amount':[],'food':[],'food_amount':[],'gas':[],'gas_amount':[],'spending':[],'spending_amount':[],'saving':[],'saving_amount':[]}
->>>>>>> dfb9ce9ad24e39bd6c8b0aceaa0d229cbf2b0a24
         li=list(acc.keys())
         with open(f"{name}.csv","r",newline='') as file:
             reader=csv.reader(file)
@@ -56,7 +52,7 @@ def load(name): #this is intended just for fetching a list that you can append t
         return acc
     else: 
         return False
-load('test')
+
 # NOTE: you can only save one savings goal, budget limit, income, ect at a time. do it every time your function runs before you return, perhaps?
 # name is the account dictionary, you can just do this easily with the export command and the name
 # update is the update you want, so not the entire dictionary, just the latest addition
@@ -166,3 +162,5 @@ def create_account():
 # We need a function that takes username and password and either makes a new account with a setup process or loads the old account into a master list -Jackson
 #new_acc('evan','password')
 #sign_in()'''
+#purge()
+#print(new_acc('test','password'))

@@ -118,6 +118,6 @@ def savingsGoalTracker(budget,account):
         #print(f"You have ${budget["Savings"]} in your savings, and you need ${savingsGoal["Cost"]} to buy your {savingsGoal["Item"]}.")
         print(f"You have $x in your savings, and you need $x to buy your x.")
 
-#for testing
+'''#for testing
 while True:
-    savingsGoalTracker(budget,account)
+    savingsGoalTracker(budget,account)'''
