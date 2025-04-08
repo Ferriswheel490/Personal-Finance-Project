@@ -69,6 +69,7 @@ Choose option (1-6): """) # Choice of what they want to do
             budgeting(0)
         elif choice == 3: # Income and expenses handling
             income_expense(account) #cecily
+<<<<<<< HEAD
         elif choice == 4: # Saving goal tracker
             pass
 <<<<<<< HEAD
@@ -77,6 +78,11 @@ Choose option (1-6): """) # Choice of what they want to do
         elif choice == 6: # Exits/Ends program
             end("Bye bye!") # 
 =======
+=======
+        elif choice == 4: # If they pick choice 4
+            print("sorry Evan hasn't done that part of his code yet come back when he is done")
+            return main()
+>>>>>>> 85e478bb113717c4958596232091f0fef9c51e2e
         elif choice == 5: # If they pick choice 5
 >>>>>>> 782aa656ad6a79e22d090ca319b9e731b4b8c91f
             pie([16, 16, 16, 16, 16, 20],['A', 'B', 'C', 'D', 'E','F'],['red', 'orange', 'yellow', 'green', 'blue','purple'],"Test Title")
