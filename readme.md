@@ -26,7 +26,7 @@ Ways to save and load accounts to an exterior database
 
 ## Contributers
 ___
-+ Fairus De La Cruz - what they did
++ Fairus De La Cruz - 
 + Evan McCabe - what they did
 + Cecily Strong - Made the account handling. Saving accounts, loading accounts, creating new accounts, ect. She made the income and expense handling. She also made the currency conversion,
 + Jackson Hauley - what they did  
@@ -40,3 +40,4 @@ Cecily Strong
 I am an ametuer programmer with an interest in learning more. I love math and solving puzzles, and intend to apply these interests in my programs. I have been programming for around a year and have graduated a CS 1400 class.
 
 Jackson Hauley - jackson.hauley@ucas-edu.net - @3334gFIOP-school
+Fairus De La Cruz - fairus.delacruz@ucas-edu.net - Ferriswheel490
