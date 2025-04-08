@@ -49,7 +49,7 @@ Financial Manager
 2. Budgeting
 3. Income and expenses handling
 4. Saving goal tracker
-5. Show pie chart
+5. Show budget pie chart
 6. Exit
                            
 Choose option (1-6): """) # Choice of what they want to do
@@ -57,14 +57,14 @@ Choose option (1-6): """) # Choice of what they want to do
             currency_convert() #cecily
         elif choice == 2: # Budgeting
             budgeting(0)
-        elif choice == 3: # Income and expenses handling
-            income_expense(account) #cecily
-        elif choice == 4: # Saving goal tracker
-           savingsGoalTracker(budget,account)
-        elif choice == 5: # Show pie chart
-            pie([16, 16, 16, 16, 16, 20],['A', 'B', 'C', 'D', 'E','F'],['red', 'orange', 'yellow', 'green', 'blue','purple'],"Test Title")
-        elif choice == 6: # Exits/Ends program
-            end("Bye bye!") # 
+        elif choice == 3: # If they pick choice 3
+            income_expense(account)
+        elif choice == 4: # If they pick choice 4
+            pass
+        elif choice == 5: # If they pick choice 5
+            pie([budget["Rent"], budget["Food"], budget["Gas"], budget["Spending"], budget["Saving"]],['Rent', 'Food', 'Gas', 'Spending', 'Saving'],['red', 'orange', 'yellow', 'green', 'blue','purple'],"Budget Pie Chart")
+        elif choice == 6: # If they pick choice 6
+            end("Bye bye!") # Exits/Ends program
         else:
             input("Invalid Input! (Choost an integer from 1 to 6)\nPress enter to continue") # Error handling
 

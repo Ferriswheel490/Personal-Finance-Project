@@ -3,6 +3,7 @@ import csv
 import os
 from cecilys_helpers import debug
 import datetime
+from essentials import cs
 
 # name is just the name for the account you want
 # NOTE: dont have two accounts have the same name 
@@ -121,10 +122,11 @@ def load_users():
 
 # Sign-in function
 def sign_in():
+    cs()
     users = load_users()
     while True:
         has_account = input("Do you have an account? (yes/no): ").strip().lower()
-        
+
         if has_account == "no":
                 create = input("Do you want to create one? (yes/no): ").strip().lower()
                 if create == "yes":
@@ -137,7 +139,7 @@ def sign_in():
             password = input("Enter your password: ")
 
             if username in users and users[username] == password:
-                print(f"Login successful! Welcome back, {username}")
+                print(f"Login successful! Welcome back, {username}!")
                 return load(username)
             else:
                 print("Invalid username or password.")
