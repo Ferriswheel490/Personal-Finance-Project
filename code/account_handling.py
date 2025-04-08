@@ -157,10 +157,5 @@ def create_account():
         return load(username)
 
 # We need a function that takes username and password and either makes a new account with a setup process or loads the old account into a master list -Jackson
-<<<<<<< HEAD
-'''debug()
-sign_in()'''
-=======
-new_acc('evan','password')
-sign_in()
->>>>>>> 42c9ade123d397acabc57922ebf8e1ca4b39c26f
+#new_acc('evan','password')
+#sign_in()'''

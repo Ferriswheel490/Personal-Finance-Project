@@ -45,6 +45,7 @@ def income_expense(dic):
             save(dic,new)
             return dic
         if num == 3: #compare
+
             year=int_input("what year do you want to see finances for?\n")
             temp=[]
             for x in dic['date']:
