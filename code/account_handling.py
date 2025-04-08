@@ -3,6 +3,7 @@ import csv
 import os
 from cecilys_helpers import debug
 import datetime
+from essentials import cs
 
 # name is just the name for the account you want
 # NOTE: dont have two accounts have the same name 
@@ -41,7 +42,7 @@ def load(name): #this is intended just for fetching a list that you can append t
     if export(name) != False:
         acc={'name':[],'date':[],'total_funds':[],'expense_source':[],'expense_amount':[],'income_source':[],'income_amount':[],'saving goals':[], 'saving goal amount':[], 'rent':[], 'rent_amount':[],'food':[],'food_amount':[],'gas':[],'gas_amount':[],'spending':[],'spending_amount':[],'saving':[],'saving_amount':[]}
         li=list(acc.keys())
-        with open(f"{name}.csv","r",newline='') as file:
+        with open(USER_FILE,"r",newline='') as file:
             reader=csv.reader(file)
             next(reader)
             for row in reader:
@@ -64,7 +65,7 @@ def save(name,update):
         formatted_date = today.strftime("%Y/%m/%d")
         update['name'] = name
         update['date'] = formatted_date
-        with open(f"{name}.csv","a",newline='') as file:
+        with open(USER_FILE,"a",newline='') as file:
             writer=csv.DictWriter(file,fieldnames=['name','date','total_funds','expense_source','expense_amount','income_source','income_amount','amount','saving goals', 'saving goal amount', 'rent', 'rent_amount','food','food_amount','gas','gas_amount','spending','spending_amount','saving','saving_amount'])
             writer.writerow(update)
 
@@ -123,10 +124,11 @@ def load_users():
 
 # Sign-in function
 def sign_in():
+    cs()
     users = load_users()
     while True:
         has_account = input("Do you have an account? (yes/no): ").strip().lower()
-        
+
         if has_account == "no":
                 create = input("Do you want to create one? (yes/no): ").strip().lower()
                 if create == "yes":
@@ -139,7 +141,7 @@ def sign_in():
             password = input("Enter your password: ")
 
             if username in users and users[username] == password:
-                print(f"Login successful! Welcome back, {username}")
+                print(f"Login successful! Welcome back, {username}!")
                 return load(username)
             else:
                 print("Invalid username or password.")
