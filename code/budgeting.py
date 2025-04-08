@@ -1,10 +1,23 @@
 # Evan - Budgeting
 
-from advanced_visuals import *
+# from advanced_visuals import *
+# JACKSON FIX THIS LATER ^
+from account_handling import load
+
+#TEMPORARY FOR TESTING:
+budget = {
+    "Rent": 0,
+    "Food": 0,
+    "Gas": 0,
+    "Spending": 0,
+    "Saving": 0
+}
 
 #Budgeting Function:
-def budgeting(money):
-
+def budgeting(account, budget):
+    money=account['total_funds']
+    money = money[0]
+    money = float(money)
     #Inner function to check if a variable is an integer, and, if so, make it an integer:
     def isInt(var):
         try:
@@ -12,7 +25,7 @@ def budgeting(money):
             return var
         except:
             print("\nINVALID INPUT\n\nPlease try again.")
-            budgeting(money)
+            budgeting(account, budget)
 
     #Inner function to check if a variable is a float, and, if so, make it a float, ensuring there are only two decimal places:
     def isFloat(var):
@@ -21,11 +34,11 @@ def budgeting(money):
             return var
         except:
             print("\nINVALID INPUT\n\nPlease try again.")
-            budgeting(money)
+            budgeting(account, budget)
 
         if round(var, 2) != var:
             print("\nToo many decimal places!\n\nPlease try again.")
-            budgeting(money)
+            budgeting(account, budget)
 
     #Ask the user if they want to set budget limits or compare expenses to budget:
     budgetChoice = input("\nWould you like to set budget limits or compare an expense to your budget?\n1. new budget\n2. compare expense to budget\n3. exit\n")
@@ -36,7 +49,7 @@ def budgeting(money):
         pass
     else:
         print("\nThat's not an option!\n\nPlease try again.")
-        budgeting(money)
+        budgeting(account, budget)
 
     #If the user chose to set budget limits:
     if budgetChoice == 1:
@@ -45,7 +58,7 @@ def budgeting(money):
         print("\nThe categories are as follows:\nRent, Food, Gas, Spending, Saving")
 
         #Tell the user how much total money they have to allocate:
-        print(f"\nYou have ${str(money):,.2f} to allocate.")
+        print("\nYou have $" + str(float(money)) + " to allocate.")
 
         #Ask the user how much money they want to allocate to their rent budget:
         newRentBudget = input("\nHow much money would you like to allocate to your rent budget?\n$")
@@ -75,7 +88,7 @@ def budgeting(money):
             print("\nThose numbers don't add up to your total money!\n\nPlease try again.")
 
             #Run the budgeting function to keep the program running:
-            budgeting(money)
+            budgeting(account, budget)
 
         #If the user’s percentages/number amounts DO add up to 100% of the user’s total money:
         else:
@@ -103,16 +116,37 @@ def budgeting(money):
         expenseCost = isFloat(expenseCost)
 
         #Ask the user what budget category it applies to:
-        category = input("\nWhat budget category does your expense apply to?\n1. Rent\n2. Food\n3. Gas\n4. Spending\n5. Saving\n")
-        category = isInt(category)
+        category = input("\nWhat budget category does your expense apply to? (Please type exactly)\nRent\nFood\nGas\nSpending\nSaving\n")
+
+        #Make sure the user chose a valid option:
+        validOption = False
+        if category == "Rent":
+            validOption = True
+        if category == "Food":
+            validOption = True
+        if category == "Gas":
+            validOption = True
+        if category == "Spending":
+            validOption = True
+        if category == "Saving":
+            validOption = True
+        if validOption == False:
+            print("\nYou either made a spelling mistake, or did not choose a valid option.\n\nPlease try again.")
+            budgeting(account, budget)
 
         #If the user DOES NOT have enough money in their budget for the expense:
+        if expenseCost > budget[category]:
 
             #Tell the user that they do not have enough money, and show them how much more money they still need:
+            moneyStillNeeded = expenseCost - budget[category]
+            print(f"\nYou do not have enough money to purchase the {expenseThing}.\nYou still need an additional ${moneyStillNeeded}.")
 
         #If the user DOES have enough money in their budget for the expense:
+        else:
 
             #Tell the user that they have enough money, and show them how much they exceeded their expense by:
+            moneyExceeded = budget[category] - expenseCost
+            print(f"You have enough money to purchase the {expenseThing}!\nYou exceeded the amount needed to pay the expense by ${moneyExceeded}.")
 
     #If the user chose to exit:
     if budgetChoice == 3:
@@ -120,4 +154,4 @@ def budgeting(money):
         #Exit this function and return to the main page:
         pass
 
-#budgeting(3000)
+budgeting(load('test'), budget)
