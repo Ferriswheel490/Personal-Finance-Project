@@ -22,7 +22,7 @@ def debug():
                 print(f'    {frame.f_code.co_name} returned {argument}')
 
             elif event == 'exception': #Triggered when there is an exception
-                print(f'    Exeption in {frame.f_code.co_name}: {argument}')
+                print(f'        Exeption in {frame.f_code.co_name}: {argument}')
 
         return trace_calls
     sys.settrace(trace_calls)
