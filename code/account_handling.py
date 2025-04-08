@@ -39,18 +39,20 @@ def export(acc): #this checks if the account exists
 # name is the name of the account you want to fetch, dont use .csv (for example, load('test'))
 def load(name): #this is intended just for fetching a list that you can append to and change
     if export(name) != False:
-        acc={'name':[],'date':[],'total_funds':[],'expense_source':[],'expense_amount':[],'income_source':[],'income_amount':[],'saving goals':[], 'saving goal amount':[], 'budget_limits':[], 'budget_limit_amount':[],'rent':[], 'rent_amount':[],'food':[],'food_amount':[],'gas':[],'gas_amount':[],'spending':[],'spending_amount':[],'saving':[],'saving_amount':[]}
+        acc={'name':[],'date':[],'total_funds':[],'expense_source':[],'expense_amount':[],'income_source':[],'income_amount':[],'saving goals':[], 'saving goal amount':[],'rent':[], 'rent_amount':[],'food':[],'food_amount':[],'gas':[],'gas_amount':[],'spending':[],'spending_amount':[],'saving':[],'saving_amount':[]}
         li=list(acc.keys())
         with open(f"{name}.csv","r",newline='') as file:
             reader=csv.reader(file)
             next(reader)
             for row in reader:
                 for x in li:
+                    print(row)
+                    print(li.index(x))
                     acc[x].append(row[li.index(x)])
         return acc
     else: 
         return False
-
+load('test')
 # NOTE: you can only save one savings goal, budget limit, income, ect at a time. do it every time your function runs before you return, perhaps?
 # name is the account dictionary, you can just do this easily with the export command and the name
 # update is the update you want, so not the entire dictionary, just the latest addition
