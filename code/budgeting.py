@@ -151,10 +151,10 @@ def budgeting(account, budget):
         #Exit this function and return to the main page:
         pass
 
-
     #TEMP FOR TESTING:
     budgeting(money, budget)
 
 budgeting(load('test'), budget)
 
+budgeting(3000, budget)
 budgeting(3000, budget)
