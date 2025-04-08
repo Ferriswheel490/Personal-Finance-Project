@@ -27,7 +27,7 @@ def new_acc(name,password):
 
 # acc is the name of the account you want to fetch, dont use .csv (for example, load('test'))
 def export(acc): #this checks if the account exists
-    with open(f"code/acc_names.csv","r") as file:
+    with open(f"Personal-Finance-Project\code/acc_names.csv","r") as file:
         reader=csv.reader(file)
         #next(reader)
         for row in reader:
