@@ -57,7 +57,7 @@ Choose option (1-6): """) # Choice of what they want to do
         if choice == 1: # Currency conversion
             currency_convert() #cecily
         elif choice == 2: # Budgeting
-            budgeting(0)
+            budgeting(account, budget)
         elif choice == 3: # Income and expenses handling
             income_expense(account) #cecily
         elif choice == 4: # Saving goal tracker
