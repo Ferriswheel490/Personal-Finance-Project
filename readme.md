@@ -39,6 +39,7 @@ Potentially has contact information
 Cecily Strong
 I am an ametuer programmer with an interest in learning more. I love math and solving puzzles, and intend to apply these interests in my programs. I have been programming for around a year and have graduated a CS 1400 class.
 
+Fairus De La Cruz
 I am an intermediate programmer interested in learning more. I also want to be a game developer, and I am making a game called Child's Drawing, which is somewhat of a horror game.
 
 Jackson Hauley - jackson.hauley@ucas-edu.net - @3334gFIOP-school
