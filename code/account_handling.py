@@ -18,7 +18,7 @@ def new_acc(name,password):
             writer=csv.DictWriter(file1,fieldnames=header)
             writer.writeheader()
             writer.writerow({'name':name,'date':'0','total_funds':'0','expense_source':'0','expense_amount':'0','income_source':'0','income_amount':'0','saving goals':'0', 'saving goal amount':'0', 'rent':'0', 'rent_amount':'0','food':'0','food_amount':'0','gas':'0','gas_amount':'0','spending':'0','spending_amount':'0','saving':'0','saving_amount':'0'})
-        with open(f"Personal-Finance-Project/code/acc_names.csv","a") as file:
+        with open(f"code/acc_names.csv","a") as file:
             file.write(f"\n{name},{password}")
         return 'Account successfully created'
     else:
@@ -26,7 +26,7 @@ def new_acc(name,password):
 
 # acc is the name of the account you want to fetch, dont use .csv (for example, load('test'))
 def export(acc): #this checks if the account exists
-    with open(f"Personal-Finance-Project/code/acc_names.csv","r") as file:
+    with open(f"code/acc_names.csv","r") as file:
         reader=csv.reader(file)
         #next(reader)
         for row in reader:
@@ -76,14 +76,14 @@ def display(dic):
             print(f"{x}:{dic[x]}")
 
 def purge(): #deletes ALL accounts. use with caution
-    with open(f"Personal-Finance-Project/code/acc_names.csv","r") as file:
+    with open(f"code/acc_names.csv","r") as file:
         reader=csv.reader(file)
         next(reader)
         for name in reader:
             try:
                 os.remove(f"{name[0]}.csv")
             except: pass
-    with open(f"Personal-Finance-Project/code/acc_names.csv","w") as file:
+    with open(f"code/acc_names.csv","w") as file:
         writer=csv.writer(file)
         writer.writerow(['name','password'])
 
@@ -104,15 +104,21 @@ def initialize_file():
 '''
 
 # Load users from CSV into a dictionary
-def load_users():
-    users = {}
-    with open(USER_FILE, "r") as file:
-        reader = csv.reader(file)
-        next(reader)  # Skip header
-        for row in reader:
-            if len(row) == 2:  # Ensure valid data
-                users[row[0]] = row[1]
-    return users
+def load(name):  # Fetch the account data from a CSV file
+    if export(name) != False:
+        acc = {'name': [], 'date': [], 'total_funds': [], 'expense_source': [], 'expense_amount': [], 'income_source': [], 'income_amount': [], 'saving goals': [], 'saving goal amount': [], 'rent': [], 'rent_amount': [], 'food': [], 'food_amount': [], 'gas': [], 'gas_amount': [], 'spending': [], 'spending_amount': [], 'saving': [], 'saving_amount': []}
+        li = list(acc.keys())
+        with open(f"{name}.csv", "r", newline='') as file:
+            reader = csv.reader(file)
+            next(reader)  # Skip the header
+            for row in reader:
+                for x in li:
+                    acc[x].append(row[li.index(x)])
+        return acc
+    else:
+        print(f"Account {name} not found.")
+        return False
+
 
 # Save a new user to the CSV file
 # I already had a function handling new accounts, and it made a new csv file for them too, so I am commenting this out -Cecily
@@ -122,30 +128,30 @@ def load_users():
         writer.writerow([username, password])'''
 
 # Sign-in function
-def sign_in():
+def sign_in(load_users):
     users = load_users()
     while True:
         has_account = input("Do you have an account? (yes/no): ").strip().lower()
         
         if has_account == "no":
-                create = input("Do you want to create one? (yes/no): ").strip().lower()
-                if create == "yes":
-                    return create_account()
-                else:
-                    print("Okay, you have to haha...")
-                    return False
+            create = input("Do you want to create one? (yes/no): ").strip().lower()
+            if create == "yes":
+                return create_account()
+            else:
+                print("Okay, goodbye!")
+                return False
         elif has_account == 'yes':
             username = input("Enter your username: ")
             password = input("Enter your password: ")
 
             if username in users and users[username] == password:
                 print(f"Login successful! Welcome back, {username}")
-                return load(username)
+                return load(username)  # Returns the user's account data
             else:
                 print("Invalid username or password.")
         else: 
-            print('invalid option')
-            sign_in()
+            print('Invalid option. Please type "yes" or "no".')
+
 
 # Account creation function
 def create_account():
