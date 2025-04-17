@@ -1,0 +1,8 @@
+name,date,total_funds,expense_source,expense_amount,income_source,income_amount,budget_limits,budget_limit_amount,rent,food,gas,saving,spending
+test,0,0,0,0,0,0,0,0,0,0,0,0,0
+test,2025/04/16,,,,,,,,0.0,0.0,0.0,0.0,0.0
+test,2025/04/16,,,,,,,,0.0,0.0,0.0,0.0,0.0
+test,2025/04/16,10.0,,,,,,,,,,,
+test,2025/04/16,,,,me,10,,,,,,,
+test,2025/04/16,11.0,,,me,1,,,,,,,
+test,2025/04/16,,,,,,,,1.0,10.0,0.0,0.0,0.0

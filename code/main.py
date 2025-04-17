@@ -1,7 +1,7 @@
 # Cecily/Evan/Fairus/Jackson - Main File
 from cecilys_helpers import debug
 from budgeting import budgeting
-from currency_conversion import main as currency_convert
+from currency_conversion import convert as currency_convert
 from income_expense_handling import income_expense
 #from savings_goal_tracker import savings_tracker
 from advanced_visuals import *
@@ -10,7 +10,7 @@ from account_handling import *
 
 from account_handling import save, sign_in
 from cecilys_helpers import debug
-from savings_goal_tracker import savingsGoalTracker, savingsGoal
+from savings_goal_tracker import savingsGoalTracker
 
 
 import csv
@@ -27,15 +27,15 @@ budget = {
     "Saving": 0
 }
 
+    
 
-# I moved the password handling to the account handling file -Cecily
+
 
 def main(): # Main function that runs the UI
-    account=sign_in()
-    if account == False: end("Bye bye!")
-
-
-    while True:
+    account=load('test')#sign_in()
+    
+   
+    def options():
         cs() # Clears the screen (cleaner UI)
         choice = int_input("""
 Financial Manager
@@ -46,26 +46,51 @@ Financial Manager
 4. Saving goal tracker
 5. Show budget pie chart
 6. Exit
-                           
+                        
 Choose option (1-6): """) # Choice of what they want to do
         if choice == 1: # Currency conversion
-            currency_convert() #cecily
+            print(currency_convert()) #cecily
+            options()
         elif choice == 2: # Budgeting
-            budgeting(0)
-        elif choice == 3: # If they pick choice 3
+            budgeting(account)
+            options()
+        elif choice == 3: # Income and expense handling
             income_expense(account)
-        elif choice == 4: # If they pick choice 4
-            pass
-        elif choice == 5: # If they pick choice 5
-            pie([budget["Rent"], budget["Food"], budget["Gas"], budget["Spending"], budget["Saving"]],['Rent', 'Food', 'Gas', 'Spending', 'Saving'],['red', 'orange', 'yellow', 'green', 'blue','purple'],"Budget Pie Chart")
+            options()
+        elif choice == 4: # Savings goal tracker
+            savingsGoalTracker(account)
+            options()
+        elif choice == 5: # Show budget pie chart
+            def latest(parameter):
+                num=0
+                
+                for x in account[parameter]:
+                    
+                    if x != '':
+                        num=x
+                return num
+            def budget(parameter):
+                return float(latest(parameter))*100/float(latest('total_funds'))
+            numbers=[budget('rent'), budget("food"), budget("gas"), budget("spending"), budget("saving")]
+            broken=True
+            for x in numbers:
+                if x != 0.0:
+                    broken=False
+            if broken == False:
+                pie(numbers,['Rent', 'Food', 'Gas', 'Spending', 'Saving'],['red', 'yellow', 'green', 'blue','purple'],"Budget Pie Chart")
+            else: print("you do not have any budget to graph")
+            options()
         elif choice == 6: # If they pick choice 6
             end("Bye bye!") # Exits/Ends program
         else:
             input("Invalid Input! (Choost an integer from 1 to 6)\nPress enter to continue") # Error handling
+            options()
+
+    options()
 
 
 
 #debug()
-purge()
-new_acc('test','password')
+'''purge()
+new_acc('test','password')'''
 main() 

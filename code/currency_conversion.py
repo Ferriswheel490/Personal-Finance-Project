@@ -3,7 +3,7 @@ import math
 from essentials import cs
 
 
-def main(): # Main function for converting currency
+def convert(): # Main function for converting currency
     cs()
     currencies = {  
     'USD': 1,  
@@ -30,12 +30,14 @@ def main(): # Main function for converting currency
                 if currency1 in list(currencies.keys()) and currency2 in list(currencies.keys()):
                     amount=(currencies[currency1]*amount)/currencies[currency2] # conversion equation (converts to usd then the other currency)
                     amount=math.floor(amount*100)/100 # rounds down
-                    return (f"{amount} {currency2}")
-                else: return 'invalid currency',False
+                    return f"{amount} {currency2}"
+                else: return ['invalid currency',False]
             else:
-                return 'invalid amount',False # Checking for invalid amount of mo
-        except: return 'not a number',False # Checking for not a number
+                return ['invalid amount',False] # Checking for invalid amount of mo
+        except: return ['not a number',False] # Checking for not a number
     output=currency_convert(currency1,currency2,amount)
-    if output(1)==False: main()
-    else: print(output)
-    return
+    
+    if output[1]==False:
+        input(output[0])
+        convert()
+    else: input(output)

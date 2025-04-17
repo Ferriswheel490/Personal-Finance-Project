@@ -1,7 +1,7 @@
 # Evan - Savings Goal Tracker
-from account_handling import *
+from account_handling import save,load
 from cecilys_helpers import debug
-
+from essentials import int_input
 #TEMPORARY FOR TESTING:
 budget = {
     "Rent": 0,
@@ -17,9 +17,6 @@ savingsGoal = {
     "Cost": 0
 }
 
-name='evan' #evan make an account and then have the name here pretty please <3
- #whichever savings goal you want :)
-account=load(name)
 
 #fetching all the goals and amounts
 
@@ -27,9 +24,9 @@ account=load(name)
 
 
 #Savings Goal Tracker Function:
-def savingsGoalTracker(budget,account):
+def savingsGoalTracker(account):
     #money=account['total_funds'][-1]
-    change={'name':'','date':'','total_funds':'','expense_source':'','expense_amount':'','income_source':'','income_amount':'','saving goals':'', 'saving goal amount':'', 'budget_limits':'', 'budget_limit_amount':''}
+    update={'name':'','date':'','total_funds':'','expense_source':'','expense_amount':'','income_source':'','income_amount':'', 'budget_limits':'', 'budget_limit_amount':'','rent':'','food':'','gas':'','saving':'','spending':''}
     #you are only using 'saving goals':'', 'saving goal amount':''
 
     #Ask the user if they want to set a savings goal or check their progress towards the goal:
@@ -42,7 +39,7 @@ def savingsGoalTracker(budget,account):
             return var
         except:
             print("\nINVALID INPUT\n\nPlease try again.")
-            savingsGoalTracker(budget, account)
+            savingsGoalTracker(account)
 
     #Inner function to check if a variable is a float, and, if so, make it a float, ensuring there are only two decimal places:
     def isFloat(var):
@@ -51,11 +48,11 @@ def savingsGoalTracker(budget,account):
             return var
         except:
             print("\nINVALID INPUT\n\nPlease try again.")
-            savingsGoalTracker(budget, account)
+            savingsGoalTracker(account)
 
-        if round(var, 2) != var:
+        if round(var, 3) != var:
             print("\nToo many decimal places!\n\nPlease try again.")
-            savingsGoalTracker(budget, account)
+            savingsGoalTracker(account)
 
     #Make sure that the user input a valid option:
     whichOne = isInt(whichOne)
@@ -65,27 +62,29 @@ def savingsGoalTracker(budget,account):
         pass
     else:
         print("\nThat's not an option!\n\nPlease try again.")
-        savingsGoalTracker(budget, account)
+        savingsGoalTracker(account)
 
     #If they want to set a savings goal:
     if whichOne == 1:
 
         #Tell the user that their new savings goal will override any old ones:
-        print("\nYour new savings goal will override any old ones.")
+        #print("\nYour new savings goal will override any old ones.")
 
         #Ask the user what item they want to save up for:
         savingsGoalItem = input("\nWhat is the item you want to save up for?\n")
 
         #Ask the user how much the item they want to save up for costs:
         savingsGoalCost = input("\nHow much does that thing cost? (number value, up to two decimals)\n")
-        isFloat(savingsGoalCost)
+        
 
         #Set the user’s new saving goal in the saving goal dictionary:
-        
-        change['saving goals']= savingsGoalItem
-        change['saving goal amount']= savingsGoalCost
-        
-        save(account,change)
+        savingsGoalCost=isFloat(savingsGoalCost)
+
+        update['saving goals']= savingsGoalItem
+        update['saving goal amount']= savingsGoalCost
+        print(account['name'])
+        save(account['name'][0],update)
+        return
 
     #If they want to check their progress towards their savings goal:
     if whichOne == 2:
@@ -102,22 +101,15 @@ def savingsGoalTracker(budget,account):
 
         #have the user choose a savings goal to set
         for x in savingsGoals:
-            print(x)
-            print(f"{savingsGoals.index(x)}. {x} ({savingAmounts[savingsGoals.index(x)]})")
-        x=int(input(''))
+            if len(x)>0:
+                #print(x)
+                print(f"{savingsGoals.index(x)}. {x} ({savingAmounts[savingsGoals.index(x)]})")
+        f=isInt(input(''))
 
-        item =  savingsGoals[x]
-        cost =  savingAmounts[x]
-
-        savingsGoal={
-            "Item": item,
-            "Cost": cost
-        }
-
-        #Show the user how much money is in their savings compared to how much their savings goal cost:
-        #print(f"You have ${budget["Savings"]} in your savings, and you need ${savingsGoal["Cost"]} to buy your {savingsGoal["Item"]}.")
-        print(f"You have $x in your savings, and you need $x to buy your x.")
-
-'''#for testing
-while True:
-    savingsGoalTracker(budget,account)'''
+        item =  savingsGoals[f]
+        cost =  savingAmounts[f]
+        money=[]
+        for x in account['total_funds']:
+            if x != '':money.append(x)
+        print(f"You have ${money[-1]} in your savings, and you need ${cost} to buy your {item}.")
+        return

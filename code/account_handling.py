@@ -13,11 +13,11 @@ def new_acc(name,password):
         exist = export(name)
     except: exist = False
     if exist == False:
-        header=['name','date','total_funds','expense_source','expense_amount','income_source','income_amount','amount','saving goals', 'saving goal amount', 'rent', 'rent_amount','food','food_amount','gas','gas_amount','spending','spending_amount','saving','saving_amount']
+        header={'name':'','date':'','total_funds':'','expense_source':'','expense_amount':'','income_source':'','income_amount':'', 'budget_limits':'', 'budget_limit_amount':'','rent':'','food':'','gas':'','saving':'','spending':''}
         with open(f"{name}.csv","w",newline='') as file1:
-            writer=csv.DictWriter(file1,fieldnames=header)
+            writer=csv.DictWriter(file1,fieldnames=list(header.keys()))
             writer.writeheader()
-            writer.writerow({'name':name,'date':'0','total_funds':'0','expense_source':'0','expense_amount':'0','income_source':'0','income_amount':'0','saving goals':'0', 'saving goal amount':'0', 'rent':'0', 'rent_amount':'0','food':'0','food_amount':'0','gas':'0','gas_amount':'0','spending':'0','spending_amount':'0','saving':'0','saving_amount':'0'})
+            writer.writerow({'name':name,'date':0,'total_funds':0,'expense_source':0,'expense_amount':0,'income_source':0,'income_amount':0, 'budget_limits':0, 'budget_limit_amount':0,'rent':0,'food':0,'gas':0,'saving':0,'spending':0})
         with open(f"code/acc_names.csv","a") as file:
             file.write(f"\n{name},{password}")
         return 'Account successfully created'
@@ -39,20 +39,28 @@ def export(acc): #this checks if the account exists
 # name is the name of the account you want to fetch, dont use .csv (for example, load('test'))
 def load(name): #this is intended just for fetching a list that you can append to and change
     if export(name) != False:
-        acc={'name':[],'date':[],'total_funds':[],'expense_source':[],'expense_amount':[],'income_source':[],'income_amount':[],'saving goals':[], 'saving goal amount':[], 'rent':[], 'rent_amount':[],'food':[],'food_amount':[],'gas':[],'gas_amount':[],'spending':[],'spending_amount':[],'saving':[],'saving_amount':[]}
+        acc={'name':[],'date':[],'total_funds':[],'expense_source':[],'expense_amount':[],'income_source':[],'income_amount':[], 'budget_limits':[], 'budget_limit_amount':[],'rent':[],'food':[],'gas':[],'saving':[],'spending':[]}
         li=list(acc.keys())
         with open(f"{name}.csv","r",newline='') as file:
             reader=csv.reader(file)
             next(reader)
             for row in reader:
                 for x in li:
-                    print(row)
-                    print(li.index(x))
-                    acc[x].append(row[li.index(x)])
+                    if len(row)>0:
+                        acc[x].append(row[li.index(x)])
         return acc
     else: 
         return False
-load('test')
+def load_users():
+    acc={}
+    with open(f"code/acc_names.csv","r",newline='') as file:
+            reader=csv.reader(file)
+            next(reader)
+            for row in reader:
+                if len(row)>0:
+                    acc[row[0]]=row[1]
+    return acc
+
 # NOTE: you can only save one savings goal, budget limit, income, ect at a time. do it every time your function runs before you return, perhaps?
 # name is the account dictionary, you can just do this easily with the export command and the name
 # update is the update you want, so not the entire dictionary, just the latest addition
@@ -64,10 +72,11 @@ def save(name,update):
         formatted_date = today.strftime("%Y/%m/%d")
         update['name'] = name
         update['date'] = formatted_date
+        dic={'name':'','date':'','total_funds':'','expense_source':'','expense_amount':'','income_source':'','income_amount':'', 'budget_limits':'', 'budget_limit_amount':'','rent':'','food':'','gas':'','saving':'','spending':''}
         with open(f"{name}.csv","a",newline='') as file:
-            writer=csv.DictWriter(file,fieldnames=['name','date','total_funds','expense_source','expense_amount','income_source','income_amount','amount','saving goals', 'saving goal amount', 'rent', 'rent_amount','food','food_amount','gas','gas_amount','spending','spending_amount','saving','saving_amount'])
+            writer=csv.DictWriter(file,fieldnames=list(dic.keys()))
             writer.writerow(update)
-
+        return 'account saved successfully'
 
 # this is mostly just for cecilys testing. displays the csv nicely
 # do NOT use with a print statement. it doesn't cause any errors or anything, its just ugly to see "None"
@@ -103,21 +112,7 @@ def initialize_file():
             writer.writerow(["username", "password"])  # Header row
 '''
 
-# Load users from CSV into a dictionary
-def load(name):  # Fetch the account data from a CSV file
-    if export(name) != False:
-        acc = {'name': [], 'date': [], 'total_funds': [], 'expense_source': [], 'expense_amount': [], 'income_source': [], 'income_amount': [], 'saving goals': [], 'saving goal amount': [], 'rent': [], 'rent_amount': [], 'food': [], 'food_amount': [], 'gas': [], 'gas_amount': [], 'spending': [], 'spending_amount': [], 'saving': [], 'saving_amount': []}
-        li = list(acc.keys())
-        with open(f"{name}.csv", "r", newline='') as file:
-            reader = csv.reader(file)
-            next(reader)  # Skip the header
-            for row in reader:
-                for x in li:
-                    acc[x].append(row[li.index(x)])
-        return acc
-    else:
-        print(f"Account {name} not found.")
-        return False
+
 
 
 # Save a new user to the CSV file
@@ -128,7 +123,7 @@ def load(name):  # Fetch the account data from a CSV file
         writer.writerow([username, password])'''
 
 # Sign-in function
-def sign_in(load_users):
+def sign_in():
     users = load_users()
     while True:
         has_account = input("Do you have an account? (yes/no): ").strip().lower()
